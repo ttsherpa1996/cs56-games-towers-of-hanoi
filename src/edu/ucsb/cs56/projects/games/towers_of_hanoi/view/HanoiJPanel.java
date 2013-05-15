@@ -1,14 +1,18 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.view;
-
 import java.awt.Graphics;
 import javax.swing.*;
+
 import java.awt.event.*;
 import java.awt.Dimension;
 import java.awt.Color;
 
 class HanoiJPanel extends JPanel {
-	public int from, to;
-	public int coordFrom, coordTo;
+	String from, to;
+	int coordFrom, coordTo;
+	String numDisks;
+	int intNumDisks = 0;
+	static boolean firstScreen;
+
     
     public HanoiJPanel(){
     	setPreferredSize(new Dimension(300,100));
@@ -18,16 +22,37 @@ class HanoiJPanel extends JPanel {
 				repaint();
 			}
 		}; // action event for the Timer
+		
+			numDisks = JOptionPane.showInputDialog("input number of disks (anything over 3 is probably a bad idea)");
+			this.intNumDisks = Integer.parseInt(numDisks);
+			firstScreen = true;
 
-    }
+    	
+	}
+    
+    	
+    
     
     public HanoiJPanel(int from, int to){
-    	setPreferredSize( new Dimension(300,100));
+    	setPreferredSize(new Dimension(300,100));
     	setBackground(Color.CYAN);
-    	coordFrom = from*50;
-    	coordTo = to*50;
-    	
-    	
+		ActionListener al = new ActionListener(){
+			public void actionPerformed(ActionEvent ae){
+				repaint();
+			}
+		}; // action event for the Timer
+		
+		
+		setPreferredSize( new Dimension(300,100));
+		setBackground(Color.CYAN);
+			
+
+		this.coordFrom = from * 100;
+		this.coordTo = to * 100;
+		
+		System.out.println("2nd constructor");
+
+		
     }
     
     public void paintComponent(Graphics g){
@@ -45,7 +70,18 @@ class HanoiJPanel extends JPanel {
     	g.drawString("3", 390, 240);
     	
     	g.setColor(Color.WHITE);
-    	g.fillRect(this.coordTo, 450, 100, 20);
+    	if(firstScreen == true){
+    		for (int i = 0; i< intNumDisks; i++){
+    			g.fillRect(95 -i*5, 450 -(intNumDisks -i)*20 , 20 + i*10, 10);
+    			firstScreen = false;
+    		}
+    	}
+    	else{
+    		for(int i = 0; i< intNumDisks; i++){ //stub for testing whether repainted JPanel
+    			g.setColor(Color.BLACK);
+    			g.fillRect(0, 0 , 300, 300);
+    		}
+    	}
 
     	
     }
