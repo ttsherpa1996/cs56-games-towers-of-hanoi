@@ -1,4 +1,3 @@
-package edu.ucsb.cs56.projects.games.towers_of_hanoi.view;
 import java.awt.Graphics;
 import javax.swing.*;
 
@@ -49,7 +48,7 @@ class HanoiJPanel extends JPanel {
 
 		this.coordFrom = from * 100;
 		this.coordTo = to * 100;
-		
+		repaint();
 		System.out.println("2nd constructor");
 
 		
@@ -73,10 +72,9 @@ class HanoiJPanel extends JPanel {
     	if(firstScreen == true){
     		for (int i = 0; i< intNumDisks; i++){
     			g.fillRect(95 -i*5, 450 -(intNumDisks -i)*20 , 20 + i*10, 10);
-    			firstScreen = false;
     		}
     	}
-    	else{
+    	else if(firstScreen == false){
     		for(int i = 0; i< intNumDisks; i++){ //stub for testing whether repainted JPanel
     			g.setColor(Color.BLACK);
     			g.fillRect(0, 0 , 300, 300);
@@ -87,3 +85,4 @@ class HanoiJPanel extends JPanel {
     }
 
 }
+
