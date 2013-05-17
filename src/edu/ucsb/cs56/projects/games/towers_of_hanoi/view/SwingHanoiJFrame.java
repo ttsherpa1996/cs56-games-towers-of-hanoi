@@ -71,7 +71,7 @@ class SwingHanoiJFrame extends JFrame{
     private void updateFrame(HanoiJPanel panel){
     	container.add(panel);
     	
-    	container.add(makeMove);
+    	//container.add(makeMove);
     	stillGaming = true;
     	
 		f.add(container);
