@@ -45,7 +45,7 @@ class HanoiJPanel extends JPanel {
     		
     		this.iFrom = Integer.parseInt(from);
 		this.iTo = Integer.parseInt(to);
-		if (this.iFrom < 0 || this.iFrom > 2 || this.iTo < 0 || this.iTo > 2)
+		if (this.iFrom < 1 || this.iFrom > 3 || this.iTo < 1 || this.iTo > 3)
 				JOptionPane.showMessageDialog(null,"Wrong Input");
 			else{
 				this.coordFrom = iFrom * 100;
@@ -94,7 +94,9 @@ class HanoiJPanel extends JPanel {
     	}
     	else if(firstScreen == false){
     		for(int i = 0; i< intNumDisks; i++){ //stub for testing whether repainted JPanel
-    			g.setColor(Color.BLACK);
+    			int move = (iTo - 1) * 150;
+    			g.fillRect(95 -i*5 - move, 450 -(intNumDisks -i)*20 , 20 + i*10, 10);
+    			//g.setColor(Color.BLACK);
     			//g.fillRect(0, 0 , 300, 300);
     		}
     	}
