@@ -22,6 +22,10 @@ public class TowersOfHanoiStateTest{
 
     @test public void noArgumentConstructorTest(){
 
+	TowersOfHanoiState letsPlay = new TowersOfHanoiState();
+
+
+
 
     } 
 
@@ -37,6 +41,34 @@ public class TowersOfHanoiStateTest{
 
 
     @test public void constructorWithArgument2(){
+
+    }
+
+    /**
+     *Test getIsGameSolved getter method which returns the boolean value isGameSolved
+     *@see TowersOfHanoiState#getIsGameSolved
+     */
+
+    @test public void getIsGameSolved_Test(){
+
+
+    }
+
+    /**
+     *Test getNumOfMoves getter method which returns the integer value numOfMoves.
+     *@see TowersOfHanoiState#getNumOfMoves
+     */
+
+    @test public void getNumOfMoves_Test(){
+
+    }
+
+    /**
+    *Test getTowers getter method which returns the ArrayList reference towers.
+    *@see TowersOfHanoi#getTowers
+    */
+
+    @test public void getTowers_Test(){
 
     }
 

@@ -17,7 +17,7 @@ public class TowersOfHanoiState{
 	= new ArrayList<ArrayList<Integer>>(3); //the 3 towers and their disks will be stored here
 
     /**
-     *No argument constructor which initializes a game starting with 3 discs.
+     *No argument constructor which initializes a game starting with 3 disks.
      */
 
     public TowersOfHanoiState(){
@@ -45,6 +45,38 @@ public class TowersOfHanoiState{
 	    towers = new ArrayList<ArrayList<Integer>>(); //stub
 
 	}
+
+    }
+
+    /**
+     *Getter method which returns the boolean value isGameSolved
+     *@return boolean value isGameSolved in TowersOfHanoiState
+     */
+
+    public boolean getIsGameSolved(){
+
+	return false; //stub
+    }
+
+    /**
+     *Getter method which returns the integer value numOfMoves.
+     *@return integer value numOfMoves in TowersOfHanoiState
+     */
+
+    public int getNumOfMoves(){
+
+	return -1; // stub
+    }
+
+
+    /**
+     *Getter method which returns the ArrayList reference towers.
+     *@return ArrayList value towers in TowersOfHanoiState
+     */
+
+    public ArrayList getTowers(){
+
+	return null; //stub
 
     }
 
