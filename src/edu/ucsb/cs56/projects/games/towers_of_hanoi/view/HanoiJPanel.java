@@ -28,7 +28,7 @@ class HanoiJPanel extends JPanel {
     	
     	this.firstScreen = firstScreen;
     	if(firstScreen == false){
-    		setPreferredSize(new Dimension(300,100));
+    		setPreferredSize(new Dimension(300,-350));
     		setBackground(Color.CYAN);
     		ActionListener al = new ActionListener(){
     			public void actionPerformed(ActionEvent ae){
@@ -37,7 +37,7 @@ class HanoiJPanel extends JPanel {
     		}; // action event for the Timer
 		
     		
-    		setPreferredSize( new Dimension(300,100));
+    		setPreferredSize( new Dimension(300,-350));
     		setBackground(Color.CYAN);
 		
     		from = JOptionPane.showInputDialog("Which column do you want to move from?");
