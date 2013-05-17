@@ -76,7 +76,7 @@ public class TowersOfHanoiState{
 
     public ArrayList getTowers(){
 
-	return null; //stub
+	return new ArrayList<Integer>(); //stub
 
     }
 
@@ -115,7 +115,7 @@ public class TowersOfHanoiState{
     public int [] disksOnTower(ArrayList<Integer> tower){
 
 
-	return null; //stub, fix it
+	return {-1}; //stub, fix it
     }
 
     /**
@@ -125,7 +125,7 @@ public class TowersOfHanoiState{
 
     public String toString(){
 
-	return null; //stub, fix it
+	return ""; //stub, fix it
     }
 
     /**
