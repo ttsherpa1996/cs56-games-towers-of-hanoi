@@ -2,71 +2,86 @@ import java.awt.Graphics;
 import javax.swing.*;
 
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.awt.Dimension;
 import java.awt.Color;
 
 class HanoiJPanel extends JPanel {
 	String from, to;
-	int coordFrom, coordTo;
+	int iFrom, iTo, coordFrom, coordTo;
 	String numDisks;
 	int intNumDisks = 0;
 	static boolean firstScreen;
+	
+	
+	private BufferedImage bufferedImage;
 
     
     public HanoiJPanel(){
-    	setPreferredSize(new Dimension(300,100));
-    	setBackground(Color.CYAN);
-		ActionListener al = new ActionListener(){
-			public void actionPerformed(ActionEvent ae){
-				repaint();
-			}
-		}; // action event for the Timer
-		
-			numDisks = JOptionPane.showInputDialog("input number of disks (anything over 3 is probably a bad idea)");
-			this.intNumDisks = Integer.parseInt(numDisks);
-			firstScreen = true;
-
     	
 	}
     
     	
     
     
-    public HanoiJPanel(int from, int to){
-    	setPreferredSize(new Dimension(300,100));
-    	setBackground(Color.CYAN);
-		ActionListener al = new ActionListener(){
-			public void actionPerformed(ActionEvent ae){
-				repaint();
-			}
-		}; // action event for the Timer
+    public HanoiJPanel(boolean firstScreen){
+    	
+    	this.firstScreen = firstScreen;
+    	if(firstScreen == false){
+    		setPreferredSize(new Dimension(300,100));
+    		setBackground(Color.CYAN);
+    		ActionListener al = new ActionListener(){
+    			public void actionPerformed(ActionEvent ae){
+    				repaint();
+    			}
+    		}; // action event for the Timer
 		
+    		
+    		setPreferredSize( new Dimension(300,100));
+    		setBackground(Color.CYAN);
 		
-		setPreferredSize( new Dimension(300,100));
-		setBackground(Color.CYAN);
-			
+    		from = JOptionPane.showInputDialog("Which column do you want to move from?");
+    		to = JOptionPane.showInputDialog("move to where?");
+    		
+    		this.iFrom = Integer.parseInt(from);
+			this.iTo = Integer.parseInt(to);
 
-		this.coordFrom = from * 100;
-		this.coordTo = to * 100;
-		repaint();
-		System.out.println("2nd constructor");
-
+			this.coordFrom = iFrom * 100;
+			this.coordTo = iTo * 100;
 		
+			firstScreen = false;
+
+			System.out.println("2nd constructor");
+
+    	}
+    	else if(firstScreen == true){
+        	setPreferredSize(new Dimension(300,100));
+        	setBackground(Color.CYAN);
+    		ActionListener al = new ActionListener(){
+    			public void actionPerformed(ActionEvent ae){
+    				repaint();
+    			}
+    		}; // action event for the Timer
+    		
+    			numDisks = JOptionPane.showInputDialog("input number of disks (anything over 3 is probably a bad idea)");
+    			this.intNumDisks = Integer.parseInt(numDisks);
+    			firstScreen = true;
+    	}
     }
     
     public void paintComponent(Graphics g){
     	super.paintComponent(g);
     	g.setColor(Color.MAGENTA);
-    	g.fillRect(100, 250, 10, 250);
+    	g.fillRect(100, 50, 10, 450);
     	g.setColor(Color.YELLOW);
-    	g.fillRect(245, 250, 10, 250);
+    	g.fillRect(245, 50, 10, 450);
     	g.setColor(Color.RED);
-    	g.fillRect(390, 250, 10, 250);
+    	g.fillRect(390, 50, 10, 450);
     	
     	g.setColor(Color.BLACK);
-    	g.drawString("1", 100, 240);
-    	g.drawString("2", 245, 240);
-    	g.drawString("3", 390, 240);
+    	g.drawString("1", 100, 40);
+    	g.drawString("2", 245, 40);
+    	g.drawString("3", 390, 40);
     	
     	g.setColor(Color.WHITE);
     	if(firstScreen == true){
@@ -85,4 +100,3 @@ class HanoiJPanel extends JPanel {
     }
 
 }
-
