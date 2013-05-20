@@ -8,27 +8,44 @@ package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
 
 public class Updater {
 
-    // This assumes that we have a Timer with the methods indicated,
+    // This assumes that we have a Timer called HanoiTimer with the methods indicated,
     // but as of now no one has implemented one yet
 
     /** Starts up timer, makes a listener (which has the callback),
      *  and passes it to the timer, which invokes the callback
      *  every n milliseconds
-     * @param n  number of milliseconds; callback to be invoked
+     *  @param n  number of milliseconds; callback to be invoked
      */
-    public static void Start(int n) {
 
-	Timer a_timer = new Timer();
+    public static void UpdateEveryNMilliseconds(int n) {
+
+	HanoiTimer a_timer = new HanoTimer();
 	TimerCallback callback = new UpdateGUITimer();
-	Timer.RegisterEveryNMilliseconds(n);
+	a_timer.RegisterEveryNMilliseconds(n);
     }
     
-    // for potential testing
+    /** Starts up timer for updating for updating every second;
+     *  The primary GUI code should be modified to call this at
+     *  the start of whenever the timer should first appear
+     *  (presumably as soon as the program starts)
+     *  (no params)
+     */
+    public static void UpdateEverySecond() {
+
+	// In an hour, there are:
+	// 1000 milliseconds/second * 60 seconds/minute * 60 minutes per hour
+	// = 1000*60*60 milliseconds
+	Updater.UpdateEverNMilliseconds(1000*60*60);
+    }
+
+    /** for potential testing
+     */
     public void go() {
 
     }
     
-    // for potential testing
+    /** for potential testing
+     */
     public static void main(String[] args) {
 	Updater a_updater = new Updater();
 	a_updater.go()
