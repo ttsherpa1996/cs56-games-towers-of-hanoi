@@ -11,20 +11,19 @@
   <property name="javadocDest" value="${webRoot}/~${env.USER}/${projectName}/javadoc" /> 
   <property name="javadocURL" value="${webBaseURL}/${projectName}/javadoc" /> 
 
+<path id="project.class.path">
+         <pathelement location="build"/>
+         <pathelement location="lib/junit-4.8.2.jar"/>
+</path> 
+
   <target name="compile" >  
    <mkdir dir="build" />
-   <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,vars,source" includeantruntime="false">                                                                                                          
-                                                                                                                                              
-     <classpath>                                                                                                                              
-         <pathelement location="build"/>                                                                                                          
-         <pathelement location="lib/junit-4.8.2.jar"/>                                                   
-     </classpath>                                                                                                                             
+   <javac srcdir="src" destdir="build" debug="true" debuglevel="lines,vars,source" includeantruntime="false">     
+                                                                                                                       <classpath refid="project.class.path" />                       
+     
    </javac>       
   </target>
 
-  <target name="run" depends="compile" description="run the TowersOfHanoiState program"> 
-    <java classname="TowersOfHanoiState" classpath="build" />
-  </target>
 
   <target name="clean" description="delete unnecessary files and directories">
     <delete dir="build" quiet="true" />
@@ -63,15 +62,12 @@
   <target name="test" depends="compile">
 
     <junit haltonerror="no" haltonfailure="no">
-       <classpath>
-         <pathelement location="lib/junit-4.8.2.jar"/>
-         <pathelement location="build"/>
-       </classpath>
+       <classpath refid="project.class.path" />
 
        <batchtest fork="yes">
           <fileset dir="src">
             <!-- this will pick up every class with a name ending in Test -->
-            <include name="*Test.java"/>
+            <include name="**/*Test.java"/>
           </fileset>
        </batchtest>
 
