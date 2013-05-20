@@ -39,10 +39,8 @@ public class Updater {
      */
     public static void UpdateEverySecond() {
 
-	// In an hour, there are:
-	// 1000 milliseconds/second * 60 seconds/minute * 60 minutes per hour
-	// = 1000*60*60 milliseconds
-	Updater.UpdateEveryNMilliseconds(1000*60*60);
+	// In an second, there are 1000 milliseconds
+	Updater.UpdateEveryNMilliseconds(1000);
     }
 
     /** for potential testing
