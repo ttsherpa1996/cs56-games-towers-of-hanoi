@@ -44,7 +44,10 @@ public class TowersOfHanoiState{
 
     public TowersOfHanoiState(){
 
-	towers = new ArrayList<ArrayList<Integer>>(); //stub
+	towers = new ArrayList<ArrayList<Integer>>(3);
+        towers.add(0, new ArrayList<Integer>(Arrays.asList(0, 1, 2)));
+        towers.add(1, new ArrayList<Integer>(3));
+        towers.add(2, new ArrayList<Integer>(3));
 
     }
 
@@ -58,13 +61,21 @@ public class TowersOfHanoiState{
 
 	if (numOfDisks <= 3 ){ // Want a minimum of 3 disks
 
-	    towers = new ArrayList<ArrayList<Integer>>(); //stub
+	    towers = new ArrayList<ArrayList<Integer>>(3);
+	    towers.add(0, new ArrayList<Integer>(Arrays.asList(0, 1, 2)));
+	    towers.add(1, new ArrayList<Integer>(3));
+	    towers.add(2, new ArrayList<Integer>(3));
 
 	}
 
 	else { // else user input is number of disks
 
-	    towers = new ArrayList<ArrayList<Integer>>(); //stub
+	    towers = new ArrayList<ArrayList<Integer>>(3);
+            towers.add(0, new ArrayList<Integer>(numOfDisks));
+            towers.add(1, new ArrayList<Integer>(numOfDisks));
+            towers.add(2, new ArrayList<Integer>(numOfDisks));
+	    for (int x = 0; x < numOfDisks; x++)
+		towers.get(0).add(x);
 
 	}
 
@@ -77,7 +88,7 @@ public class TowersOfHanoiState{
 
     public boolean getIsGameSolved(){
 
-	return false; //stub
+	return isGameSolved; 
     }
 
     /**
@@ -87,7 +98,7 @@ public class TowersOfHanoiState{
 
     public int getNumOfMoves(){
 
-	return -1; // stub
+	return numOfMoves;
     }
 
 
@@ -98,7 +109,7 @@ public class TowersOfHanoiState{
 
     public ArrayList<ArrayList<Integer>> getTowers(){
 
-	return new ArrayList<ArrayList<Integer>>(); //stub
+	return towers;
 
     }
 
