@@ -123,8 +123,15 @@ public class TowersOfHanoiState{
 
     public boolean isMoveLegal(int indexFromTower, int indexToTower){
 
+	if (towers.get(indexToTower).isEmpty())
+	    return true;
 
-	return false; //Stub, needs implementation
+	else if (towers.get(indexFromTower).get(0) > towers.get(indexToTower).get(0))
+	    return true;
+
+	else 
+	    return false;
+
     }
 
     /**
