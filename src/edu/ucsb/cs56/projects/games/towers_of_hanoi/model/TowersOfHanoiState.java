@@ -13,6 +13,7 @@ public class TowersOfHanoiState{
 
     private boolean isGameSolved = false;
     private int numOfMoves = 0;
+    private int numOfDisks;
     private ArrayList<ArrayList<Integer>> towers 
 	= new ArrayList<ArrayList<Integer>>(3); //the 3 towers and their disks will be stored here
 
@@ -48,7 +49,7 @@ public class TowersOfHanoiState{
         towers.add(0, new ArrayList<Integer>(Arrays.asList(0, 1, 2)));
         towers.add(1, new ArrayList<Integer>(3));
         towers.add(2, new ArrayList<Integer>(3));
-
+	this.numOfDisks = 3;
     }
 
     /**
@@ -65,7 +66,7 @@ public class TowersOfHanoiState{
 	    towers.add(0, new ArrayList<Integer>(Arrays.asList(0, 1, 2)));
 	    towers.add(1, new ArrayList<Integer>(3));
 	    towers.add(2, new ArrayList<Integer>(3));
-
+	    this.numOfDisks = 3;
 	}
 
 	else { // else user input is number of disks
@@ -74,9 +75,10 @@ public class TowersOfHanoiState{
             towers.add(0, new ArrayList<Integer>(numOfDisks));
             towers.add(1, new ArrayList<Integer>(numOfDisks));
             towers.add(2, new ArrayList<Integer>(numOfDisks));
-	    for (int x = 0; x < numOfDisks; x++)
+	    for (int x = 0; x < numOfDisks; x++){
 		towers.get(0).add(x);
-
+	    }
+	    this.numOfDisks = numOfDisks;
 	}
 
     }
@@ -124,10 +126,13 @@ public class TowersOfHanoiState{
 
     public boolean isMoveLegal(int indexFromTower, int indexToTower){
 
-	if (towers.get(indexToTower).isEmpty())
-	    return true;
+	if (towers.get(indexFromTower).isEmpty())
+	    return false;
 
-	else if (towers.get(indexFromTower).get(0) > towers.get(indexToTower).get(0))
+        else if (towers.get(indexToTower).isEmpty())
+            return true;
+
+	else if (towers.get(indexFromTower).get(0) < towers.get(indexToTower).get(0))
 	    return true;
 
 	else 
@@ -145,7 +150,7 @@ public class TowersOfHanoiState{
     public void makeMove(int indexFromTower, int indexToTower) throws TowersOfHanoiIllegalMoveException {
 
 
-	if ( this.isMoveLegal(indexFromTower, indexToTower) )
+	if ( !(this.isMoveLegal(indexFromTower, indexToTower)) )
 	    throw new TowersOfHanoiIllegalMoveException();
 
 	else {
@@ -154,7 +159,7 @@ public class TowersOfHanoiState{
 	    towers.get(indexFromTower).remove(0); //Remove top disc of fromTower
 	    towers.get(indexToTower).add(0,x); //Put this disc on top of toTower
 
-
+	    numOfMoves++;
 	}
 
     }
@@ -168,7 +173,9 @@ public class TowersOfHanoiState{
     public int [] disksOnTower(ArrayList<Integer> tower){
 
 
-	int [] arr = tower.toArray();
+	int [] arr = new int[tower.size()];
+	for (int i = 0; i < tower.size(); i ++)
+	    arr[i] = tower.get(i);
 	return arr; 
     }
 
@@ -179,8 +186,60 @@ public class TowersOfHanoiState{
 
     public String toString(){
 
-	return ""; //stub, fix it
+	String picture = "";
+	String assister = ""; //Used solely to help us draw
+	String assister2 = ""; //Another helper	
+	String assister3 = "";
+	String assister4 = "";
+
+
+	for (int x = 0; x <= numOfDisks; x++){
+	    assister = assister +" ";
+	    assister3 = assister3 + "-";
+	}
+
+	assister2 = assister;	
+	assister4 = assister;
+
+	picture = assister + "|" + assister +"\t" + assister + "|" + assister + "\t" 
+	        + assister +"|" + assister +"\n"; //top line
+
+	for ( int i = numOfDisks - 1; i >= 0 ; i--){
+	    for (int k = 0; k < 3; k++){
+		int a;
+		if (towers.get(k).size() <= i)
+		    a = -1;
+		else
+		    a = towers.get(k).get(towers.get(k).size() - i -1); //number of "="'s
+
+		for (int b = 0; b <= a; b++){
+
+		    assister = assister.substring(1, numOfDisks+1)+ "=";
+		    assister2 = "=" + assister2.substring(0,numOfDisks);
+		}
+
+		picture = picture + assister + "|" + assister2;
+
+		assister = assister4; 
+		assister2 = assister4; //reset them
+
+		if ( (k % 3) == 2)
+		    picture = picture + "\n";
+		else 
+		    picture = picture + "\t";
+
+	    }
+	}
+
+
+	picture = picture + assister3 + "+" + assister3 +"\t" + assister3 + "+" + assister3 + "\t" + assister3                    + "+" + assister3 +"\n";
+
+	picture = picture + assister4 + "0" + assister4 +"\t" + assister4 + "1" + assister4 + "\t"+ assister4                     + "2" + assister4 +"\n";
+
+	return picture;
+
     }
+
 
     /**
      *This is a method to determine whether the game has been solved yet.
@@ -189,9 +248,16 @@ public class TowersOfHanoiState{
 
     public boolean solved(){
 
-	return false; // stub, fix it
+	int [] arr = new int[numOfDisks];
+	for (int x = 0; x < numOfDisks; x++)
+	    arr[x] = x;
+
+	if (Arrays.equals(arr, disksOnTower(towers.get(1))) || Arrays.equals(arr, disksOnTower(towers.get(2)))){
+	    isGameSolved = true;
+	    return true;
+	}
+	else 
+	    return false;
     }
-
-
 
 }
