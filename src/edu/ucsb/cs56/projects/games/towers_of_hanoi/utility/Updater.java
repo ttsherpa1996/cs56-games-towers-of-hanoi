@@ -10,11 +10,17 @@ public class Updater {
 
     // This assumes that we have a Timer with the methods indicated,
     // but as of now no one has implemented one yet
-    public static void Start {
+
+    /** Starts up timer, makes a listener (which has the callback),
+     *  and passes it to the timer, which invokes the callback
+     *  every n milliseconds
+     * @param n  number of milliseconds; callback to be invoked
+     */
+    public static void Start(int n) {
 
 	Timer a_timer = new Timer();
-	//	
-
+	TimerCallback callback = new UpdateGUITimer();
+	Timer.RegisterEveryNMilliseconds(n);
     }
     
     // for potential testing
@@ -28,5 +34,4 @@ public class Updater {
 	a_updater.go()
     }
 
-    
 }
