@@ -1,6 +1,5 @@
 package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
 
-
 /** Class that main GUI can call to start up timer
  *  at the beginning of the game
  *  @author Shanen Cross
@@ -35,7 +34,7 @@ public class Updater {
 	// In an hour, there are:
 	// 1000 milliseconds/second * 60 seconds/minute * 60 minutes per hour
 	// = 1000*60*60 milliseconds
-	Updater.UpdateEverNMilliseconds(1000*60*60);
+	Updater.UpdateEveryNMilliseconds(1000*60*60);
     }
 
     /** for potential testing
@@ -48,7 +47,6 @@ public class Updater {
      */
     public static void main(String[] args) {
 	Updater a_updater = new Updater();
-	a_updater.go()
+	a_updater.go();
     }
-
 }
