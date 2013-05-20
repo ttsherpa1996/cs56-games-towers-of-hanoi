@@ -16,7 +16,7 @@ public class Updater {
      *  @param n  number of milliseconds; callback to be invoked
      */
     public static void UpdateEveryNMilliseconds(int n) {
-	HanoiTimer a_timer = new HanoTimer();
+	HanoiTimer a_timer = new HanoiTimer();
 	TimerCallback callback = new UpdateGUITimer();
 
 	// Register our callback with the timer (the event source),
