@@ -88,6 +88,7 @@ public class TowersOfHanoiState{
 
     public boolean getIsGameSolved(){
 
+
 	return isGameSolved; 
     }
 
@@ -144,6 +145,18 @@ public class TowersOfHanoiState{
     public void makeMove(int indexFromTower, int indexToTower) throws TowersOfHanoiIllegalMoveException {
 
 
+	if ( this.isMoveLegal(indexFromTower, indexToTower) )
+	    throw new TowersOfHanoiIllegalMoveException();
+
+	else {
+
+	    int x = towers.get(indexFromTower).get(0);
+	    towers.get(indexFromTower).remove(0); //Remove top disc of fromTower
+	    towers.get(indexToTower).add(0,x); //Put this disc on top of toTower
+
+
+	}
+
     }
 
     /**
@@ -155,8 +168,8 @@ public class TowersOfHanoiState{
     public int [] disksOnTower(ArrayList<Integer> tower){
 
 
-	int [] arr = {-1};
-	return arr; //stub, fix it
+	int [] arr = tower.toArray();
+	return arr; 
     }
 
     /**
