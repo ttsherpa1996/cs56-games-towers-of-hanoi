@@ -4,6 +4,6 @@ package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
  *  @author Shanen Cross
  */
 
-interface TimerCallback {
+public interface TimerCallback {
     public void callback(Object o);
 }

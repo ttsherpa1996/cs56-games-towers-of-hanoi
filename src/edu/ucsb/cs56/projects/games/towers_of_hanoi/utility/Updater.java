@@ -1,5 +1,8 @@
 package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
 
+import  javax.swing.*;
+import java.awt.event.*;
+
 /** Class that main GUI can call to start up timer
  *  at the beginning of the game
  *  @author Shanen Cross
@@ -16,8 +19,7 @@ public class Updater {
      *  @param n  number of milliseconds; callback to be invoked
      */
     public static void UpdateEveryNMilliseconds(int n) {
-	HanoiTimer a_timer = new HanoiTimer();
-	TimerCallback callback = new UpdateGUITimer();
+	//	SwingHanoiJFrame.container().add
 
 	// Register our callback with the timer (the event source),
 	// Specifying to the timer that it is to be invoked
