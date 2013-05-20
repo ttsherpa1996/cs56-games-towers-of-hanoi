@@ -15,12 +15,18 @@ public class Updater {
      *  every n milliseconds
      *  @param n  number of milliseconds; callback to be invoked
      */
-
     public static void UpdateEveryNMilliseconds(int n) {
-
 	HanoiTimer a_timer = new HanoTimer();
 	TimerCallback callback = new UpdateGUITimer();
-	a_timer.RegisterEveryNMilliseconds(n);
+
+	// Register our callback with the timer (the event source),
+	// Specifying to the timer that it is to be invoked
+	// every n milliseconds
+
+	// (Here I assume our HanoiTimer class has a member method
+	// RegisterEveryNMilliseconds which registers a listener
+	// and schedules itself to invoke it every n milliseconds)
+	a_timer.EveryNMilliseconds(n);
     }
     
     /** Starts up timer for updating for updating every second;
