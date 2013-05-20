@@ -1,7 +1,8 @@
-package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
+package edu.ucsb.cs56.games.towers_of_hanoi.utility;
 
 import  javax.swing.*;
 import java.awt.event.*;
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.view;
 
 /** Class that main GUI can call to start up timer
  *  at the beginning of the game
@@ -19,7 +20,8 @@ public class Updater {
      *  @param n  number of milliseconds; callback to be invoked
      */
     public static void UpdateEveryNMilliseconds(int n) {
-	//	SwingHanoiJFrame.container().add
+	TimeLabel = new JLabel("00:00:00"); // I make the assmupion that hr:min:sec, with two digits each, is the form of our timer
+	f.add(TimeLabel); // f is a static SwingHanoiJFrame
 
 	// Register our callback with the timer (the event source),
 	// Specifying to the timer that it is to be invoked
@@ -28,7 +30,7 @@ public class Updater {
 	// (Here I assume our HanoiTimer class has a member method
 	// RegisterEveryNMilliseconds which registers a listener
 	// and schedules itself to invoke it every n milliseconds)
-	a_timer.EveryNMilliseconds(n);
+	a_timer.EveryNMilliseconds(n, time_label);
     }
     
     /** Starts up timer for updating for updating every second;

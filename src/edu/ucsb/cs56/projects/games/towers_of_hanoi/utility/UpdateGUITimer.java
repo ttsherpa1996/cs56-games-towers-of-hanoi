@@ -1,4 +1,7 @@
-package src.edu.ucsb.cs56.games.towers_of_hanoi.utility;
+package edu.ucsb.cs56.games.towers_of_hanoi.utility;
+
+import javax.swing.*;
+import java.awt.event.*;
 
 /** Timer Callback To Be Invoked Every N Milliseconds
  * @author Shanen Cross
@@ -9,7 +12,9 @@ public class UpdateGUITimer implements TimerCallback {
 	public void callback(Object o) {
 	if (o != null)
 	    {
-		// Implement rendering of GUI Timer here
+		if (o isinstanceof JLabel) {
+		    // implementation
+		}
 	    }
     }
 }
