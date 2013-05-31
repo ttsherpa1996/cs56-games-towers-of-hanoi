@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- class HanoiTimerGUI example of how to use HanoiTimer.  Uses buttons and a 
+ Example class of how to use HanoiTimer.  Uses buttons and a 
  JLabel.  ActionListeners call the HanoiTimer's start/restart/stop methods.
 */
 public class HanoiTimerGUI {
@@ -33,7 +33,7 @@ public class HanoiTimerGUI {
 		TimePanel = new JPanel(new BorderLayout());
         TimePanel.add(TimeDisplay, BorderLayout.CENTER);
 		
-		GameTimer = new HanoiTimer(500);
+		GameTimer = new HanoiTimer(1000);
 		GameTimer.SetTimeElapsedText(TimeDisplay);
 		
 		JButton RestartButton = new JButton("Restart Timer");

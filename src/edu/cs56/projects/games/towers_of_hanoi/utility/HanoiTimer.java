@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- class HanoiTimer that invokes threads to act as a timer. Contains methods
+ Class that invokes threads to act as a timer. Contains methods
  to start, restart, and stop.  Must be called with an applicable JLabel to update.
  */
 public class HanoiTimer {
@@ -18,12 +18,12 @@ public class HanoiTimer {
 	private JLabel TimeOutput;
 	private int ThreadRunning = 0;
 	
-	//POSSIBLY IMPLEMENT HanoiTimer
-	//EveryNMilliseconds(n, time_label);
-	//UpdateEveryNMilliseconds(1000);
+	//POSSIBLY IMPLEMENT HanoiTimer ?
+	//EveryNMilliseconds(n, time_label); ?
+	//UpdateEveryNMilliseconds(1000); ?
 	
 	/**
-	 HanoiTimer() no arg constructor.
+	 no arg constructor.
 	 */
 	public HanoiTimer() {
 		MiliSeconds = 1000;
@@ -31,8 +31,9 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 HanoiTimer(long inputMiliSeconds) constructor that sets the delay between
+	 Constructor that sets the delay between
 	 Thread job completion (delay between how long "seconds" are).
+	 @param long inputMiliSeconds
 	 */
 	public HanoiTimer(long inputMiliSeconds) {
 		TimeElapsed = 0;
@@ -40,7 +41,7 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 restart() restarts the "timer" thread at 0.
+	 Restarts the "timer" thread at 0.
 	 @param JLabel inputlabel JLabel passed in such that it can be formatted
 	 for TimeElapsed.
 	 */
@@ -81,7 +82,7 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 start() Starts the "timer" thread and continues where it left off.
+	 Starts the "timer" thread and continues where it left off.
 	 @param JLabel inputlabel JLabel passed in such that it can be formatted
 	 for TimeElapsed.
 	 */
@@ -121,7 +122,7 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 stop() Stops the "timer" threads active and acts as a stopped screen.
+	 Stops the "timer" threads active and acts as a stopped screen.
 	 @param JLabel inputlabel JLabel passed in such that it can be formatted
 	 for TimeElapsed.
 	 */
@@ -155,7 +156,7 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 setTimeElapsedText(JLabel inputlabel) sets the current TimeElapsed on a
+	 Sets the current TimeElapsed on a
 	 JLabel with proper formatting.
 	 @param JLabel inputlabel JLabel passed in such that it can be formatted
 	 for TimeElapsed.
@@ -208,15 +209,15 @@ public class HanoiTimer {
 		inputLabel.setText(Hrs+":"+Mins+":"+Secs);
 	}
 	/**
-	 IncrementTimeElapsed() increments TimeElapsed variable
+	 Increments TimeElapsed variable
 	 */
 	private synchronized void IncrementTimeElapsed(){
 		TimeElapsed++;
 	}
 	
 	/**
-	 setTimeElapsed(long input)
-	 @param long int input for nonmember access
+	 Sets TimeElapsed for nonmember access
+	 @param long input
 	 */
 	
 	public void SetTimeElapsed(long input) {
@@ -224,8 +225,8 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 getTimeElapsed()
-	 @return TimeElapsed private variable for nonmember access
+	 Gets TimeElapsed for nonmemberaccess
+	 @return long TimeElapsed
 	*/
 	public long getTimeElapsed() { 
 		return TimeElapsed; 
