@@ -1,4 +1,4 @@
-package edu.cs56.projects.games.towers_of_hanoi.utility;
+package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 
 import javax.swing.*;
 import java.awt.*;
