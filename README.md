@@ -1,11 +1,10 @@
-cs56-games-towers-of-hanoi
-==========================
+# cs56-games-towers-of-hanoi
 
 A command line towers of hanoi game---not just a simulation, but a GAME
 
 ![](http://i.imgur.com/T2eKHVT.png)
 
-Next steps:
+## Next steps:
 
 (1) Implement a timer object in a separate package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility.
 
