@@ -4,3 +4,6 @@
 *.jar
 *.war
 *.ear
+
+# Make sure to NOT ignore the JUnit jar
+!junit-?*.jar
