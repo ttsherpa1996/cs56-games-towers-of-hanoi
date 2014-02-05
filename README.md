@@ -1,5 +1,7 @@
 # cs56-games-towers-of-hanoi
 
+W14 ready! (Jakob Staahl)
+
 A command line towers of hanoi game---not just a simulation, but a GAME
 
 ![](http://i.imgur.com/T2eKHVT.png)
