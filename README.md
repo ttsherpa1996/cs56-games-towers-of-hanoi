@@ -10,7 +10,7 @@ To launch the game, simply use the command:
 ```
 ant run
 ```
-When prompted, type in the number of starting disks you would like there to be and hit enter.
+When prompted by ant for the input-runargs, type in the number of starting disks you would like there to be and hit enter.
 
 ## Description
 
