@@ -38,7 +38,7 @@
 
 <target name="run" depends="compile, input-runargs" description="run the project">
   <!-- You can use exec here, depending on your needs -->
-  <java classname="${viewPackagePrefix}.CmdLineHanoi" classpathref="project.class.path">
+  <java classname="${viewPackagePrefix}.CmdLineHanoi" classpathref="project.class.path" fork="true">
     <arg line="${args}"/>
   </java>
 </target>

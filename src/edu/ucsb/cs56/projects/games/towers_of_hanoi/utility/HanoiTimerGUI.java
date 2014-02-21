@@ -15,46 +15,55 @@ public class HanoiTimerGUI {
 	private JLabel TimeDisplay;
 	private JFrame frame;
 	private JPanel MainTimePanel;
+	private JPanel GamePanel;
 	
     
     public HanoiTimerGUI() {
-		frame = new JFrame("Tester for Hanoi Timer");
+	System.out.println("Making JFrame...");
+	frame = new JFrame();
+	System.out.println("JFrame made, setting close operation...");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-		TimeDisplay = new JLabel("0",JLabel.CENTER);
+        System.out.println("Making JLabels/JPanels...");
+	System.out.flush();
+	TimeDisplay = new JLabel("0",JLabel.CENTER);
         TimeDisplay.setForeground(Color.black);
         TimeDisplay.setBackground(Color.white);
         TimeDisplay.setOpaque(true);
         TimeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
         TimeDisplay.setPreferredSize(new Dimension(100, 50));
 		
-		MainTimePanel = new JPanel(new BorderLayout());
+	MainTimePanel = new JPanel(new BorderLayout());
 		
-		TimePanel = new JPanel(new BorderLayout());
+	TimePanel = new JPanel(new BorderLayout());
         TimePanel.add(TimeDisplay, BorderLayout.CENTER);
+	System.out.println("Making GameTimer");
+	GameTimer = new HanoiTimer(1000);
+	GameTimer.SetTimeElapsedText(TimeDisplay);
 		
-		GameTimer = new HanoiTimer(1000);
-		GameTimer.SetTimeElapsedText(TimeDisplay);
+	JButton RestartButton = new JButton("Restart Timer");
+	RestartButton.addActionListener(new RestartListener());
 		
-		JButton RestartButton = new JButton("Restart Timer");
-		RestartButton.addActionListener(new RestartListener());
+	JButton StopButton = new JButton("Stop Timer");
+	StopButton.addActionListener(new StopListener());
 		
-		JButton StopButton = new JButton("Stop Timer");
-		StopButton.addActionListener(new StopListener());
+	JButton StartButton = new JButton("Start Timer");
+	StartButton.addActionListener(new StartListener());
 		
-		JButton StartButton = new JButton("Start Timer");
-		StartButton.addActionListener(new StartListener());
-		
-		MainTimePanel.add(StopButton, BorderLayout.EAST);
-		MainTimePanel.add(RestartButton, BorderLayout.WEST);
-		MainTimePanel.add(TimePanel, BorderLayout.NORTH);
-		MainTimePanel.add(StartButton, BorderLayout.SOUTH);
-		
-        frame.setContentPane(MainTimePanel);
-		frame.pack();
+	MainTimePanel.add(StopButton, BorderLayout.EAST);
+	MainTimePanel.add(RestartButton, BorderLayout.WEST);
+	MainTimePanel.add(TimePanel, BorderLayout.NORTH);
+	MainTimePanel.add(StartButton, BorderLayout.SOUTH);
+	
+	JButton testButton = new JButton("GAME GOES HERE");
+	GamePanel = new JPanel(new BorderLayout());
+	GamePanel.add(testButton);
+
+	frame.add(GamePanel,BorderLayout.SOUTH);	
+        frame.add(MainTimePanel,BorderLayout.NORTH);
+	frame.pack();
         frame.setVisible(true);
-		
-		GameTimer.start(TimeDisplay);
+	System.out.println("Starting Timer, GUI should be displaying");	
+	GameTimer.start(TimeDisplay);
     }
 	
 	class StartListener implements ActionListener {

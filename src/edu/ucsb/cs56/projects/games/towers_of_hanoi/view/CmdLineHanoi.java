@@ -1,4 +1,5 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.view;
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.utility.*;
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 import java.util.Scanner;
 
@@ -11,6 +12,9 @@ public class CmdLineHanoi{
 
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
 
+	System.out.println("Attempting to open the GUI");
+	HanoiTimerGUI gui = new HanoiTimerGUI();
+	System.out.println("Continuing on");
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
 
