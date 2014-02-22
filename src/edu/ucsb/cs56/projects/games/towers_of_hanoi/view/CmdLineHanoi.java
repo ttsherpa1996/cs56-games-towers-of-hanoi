@@ -43,7 +43,7 @@ public class CmdLineHanoi{
 	    disks = 3;
     
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
-
+	gui.setTowers(letsPlay.getTowers());
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
 

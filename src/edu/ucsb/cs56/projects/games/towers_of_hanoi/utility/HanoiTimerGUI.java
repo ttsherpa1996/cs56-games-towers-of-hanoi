@@ -3,6 +3,7 @@ package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  Example class of how to use HanoiTimer.  Uses buttons and a 
@@ -15,7 +16,7 @@ public class HanoiTimerGUI {
 	private JLabel TimeDisplay;
 	private JFrame frame;
 	private JPanel MainTimePanel;
-	private JPanel GamePanel;
+	private GamePanel gp;
 	
     
     public HanoiTimerGUI() {
@@ -55,10 +56,11 @@ public class HanoiTimerGUI {
 	MainTimePanel.add(StartButton, BorderLayout.SOUTH);
 	
 	JButton testButton = new JButton("GAME GOES HERE");
-	GamePanel = new JPanel(new BorderLayout());
-	GamePanel.add(testButton);
+	gp = new GamePanel();
+	gp.setPreferredSize(new Dimension(400,400));
+	gp.add(testButton);
 
-	frame.add(GamePanel,BorderLayout.SOUTH);	
+	frame.add(gp,BorderLayout.SOUTH);	
         frame.add(MainTimePanel,BorderLayout.NORTH);
 	frame.pack();
         frame.setVisible(true);
@@ -84,6 +86,10 @@ public class HanoiTimerGUI {
 		}
 	}
 	
+    public void setTowers(ArrayList<ArrayList<Integer>> t){
+	gp.setTowers(t);		
+    }
+
     public static void main (String [] args) {
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
