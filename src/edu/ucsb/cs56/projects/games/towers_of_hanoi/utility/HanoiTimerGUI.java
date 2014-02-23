@@ -38,8 +38,8 @@ public class HanoiTimerGUI {
 	TimePanel = new JPanel(new BorderLayout());
         TimePanel.add(TimeDisplay, BorderLayout.CENTER);
 	System.out.println("Making GameTimer");
-	GameTimer = new HanoiTimer(1000);
-	GameTimer.SetTimeElapsedText(TimeDisplay);
+	GameTimer = new HanoiTimer(TimeDisplay);
+	GameTimer.SetTimeElapsedText();
 		
 	JButton RestartButton = new JButton("Restart Timer");
 	RestartButton.addActionListener(new RestartListener());
@@ -65,24 +65,24 @@ public class HanoiTimerGUI {
 	frame.pack();
         frame.setVisible(true);
 	System.out.println("Starting Timer, GUI should be displaying");	
-	GameTimer.start(TimeDisplay);
+	GameTimer.start();
     }
 	
 	class StartListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.start(TimeDisplay);
+			GameTimer.start();
 		}
 	}
 	
 	class RestartListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.restart(TimeDisplay);
+			GameTimer.restart();
 		}
 	}
 	
 	class StopListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.stop(TimeDisplay);
+			GameTimer.stop();
 		}
 	}
 	
