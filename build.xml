@@ -35,6 +35,10 @@
   </java>
 </target>
 
+<target name="run-GUI" depends="compile" description="run the game in full GUI">
+	<java classname="${timerPackagePrefix}.GUIMain" classpathref="project.class.path" fork="true">
+	</java>
+</target>
 
 <target name="run" depends="compile, input-runargs" description="run the project">
   <!-- You can use exec here, depending on your needs -->
