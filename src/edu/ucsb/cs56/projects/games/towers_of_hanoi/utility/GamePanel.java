@@ -1,8 +1,15 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
+
 import java.util.ArrayList;
+
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState.TowersOfHanoiIllegalMoveException;
 
 public class GamePanel extends JPanel {
 	private final int DISK_HEIGHT;
@@ -14,6 +21,8 @@ public class GamePanel extends JPanel {
 	private final Color DISK_COLOR = Color.BLUE;
 	private int maxBar;
 	private int towerHeight=0;
+	private int to, from;
+	private TowersOfHanoiState state;
 	
 	private ArrayList<ArrayList<Integer>> towers;
 
@@ -24,6 +33,11 @@ public class GamePanel extends JPanel {
 		TOWER_OFFSET = 20;
 		DISK_OFFSET = 20;
 		INITIAL_OFFSET = 50;
+		for(int tower = 1; tower <= 3; tower ++){//adds 3 buttons for each tower
+			JButton temp = new JButton(Integer.toString(tower));
+			temp.addActionListener(new TowerButton(tower));
+			this.add(temp);
+		}
 	}
 	
 	public void paint(Graphics g){
@@ -47,27 +61,44 @@ public class GamePanel extends JPanel {
 		}
 	}
 
-	public void setTowers(ArrayList<ArrayList<Integer>> t){
-		towers=t;
+	public void setState(TowersOfHanoiState s){
+		state = s;
+		towers=s.getTowers();
 		maxBar=towers.get(0).size()-1;//this assigns maxBar to the # of bars - 1 which is the same as the max # that represents a bar (ie: max possible value returned by towers.get(a).get(b) )
 		towerHeight = (maxBar + 1) * 2 * DISK_HEIGHT;
 	}
-/*
-	private int getMax(){
-		if(towers==null){
-			return 0;
-		}
-		int max = 0;
-		for(int tower = 0; tower < towers.size(); tower ++){
-			for(int bar = 0; bar < towers.get(tower).size(); bar++){
-				//System.out.println(towers.get(tower).get(bar));
-				if(towers.get(tower).get(bar) > max){
-					max = towers.get(tower).get(bar);
-				}
-			}
-		}
-		return max;
-	}*/
 	
+	private class TowerButton implements ActionListener{
+		
+		int towerNum;//this is the number that represents the tower
+		
+		public TowerButton(int towerNum){
+			this.towerNum = towerNum;
+		}
+		
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			System.out.println(towerNum + " Pressed");
+			if(from == 0){
+				from = towerNum;
+				return;
+			}
+			if(to == 0){
+				to = towerNum;
+				System.out.println("From: " + from + ", To: " + to);
+				try {
+					state.makeMove(from-1, to-1);
+				} catch (TowersOfHanoiIllegalMoveException e) {
+					System.out.println("Illegal Move");
+					to = 0; from= 0;
+				}
+				to = 0;  from = 0;
+				return;
+			}
+			to = 0;  from = 0;
+			actionPerformed(arg0);
+		}
+		
+	}
 }
 

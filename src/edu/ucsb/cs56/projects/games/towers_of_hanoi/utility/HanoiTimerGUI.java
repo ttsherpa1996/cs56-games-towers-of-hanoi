@@ -1,6 +1,9 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 
 import javax.swing.*;
+
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -55,15 +58,13 @@ public class HanoiTimerGUI {
 	MainTimePanel.add(TimePanel, BorderLayout.NORTH);
 	MainTimePanel.add(StartButton, BorderLayout.SOUTH);
 	
-	JButton testButton = new JButton("GAME GOES HERE");
 	gp = new GamePanel();
-	gp.setPreferredSize(new Dimension(400,400));
-	gp.add(testButton);
+	gp.setPreferredSize(new Dimension(500,200));
 
 	frame.add(gp,BorderLayout.SOUTH);	
-        frame.add(MainTimePanel,BorderLayout.NORTH);
+    frame.add(MainTimePanel,BorderLayout.NORTH);
 	frame.pack();
-        frame.setVisible(true);
+    frame.setVisible(true);
 	System.out.println("Starting Timer, GUI should be displaying");	
 	GameTimer.start();
     }
@@ -86,8 +87,8 @@ public class HanoiTimerGUI {
 		}
 	}
 	
-    public void setTowers(ArrayList<ArrayList<Integer>> t){
-	gp.setTowers(t);		
+    public void setState(TowersOfHanoiState s){
+    	gp.setState(s);		
     }
 
     public static void main (String [] args) {

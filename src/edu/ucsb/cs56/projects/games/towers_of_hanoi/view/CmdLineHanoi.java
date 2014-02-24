@@ -41,9 +41,9 @@ public class CmdLineHanoi{
 					   //otherwise
 	if (disks < 3) //minimum 3 disks
 	    disks = 3;
-    
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
-	gui.setTowers(letsPlay.getTowers());
+	//gui.setTowers(letsPlay.getTowers());
+	gui.setState(letsPlay);
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
 
