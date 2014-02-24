@@ -92,14 +92,12 @@ public class GamePanel extends JPanel {
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			//System.out.println(towerNum + " Pressed");
 			if(from == 0){				
 				from = towerNum;
 				return;
 			}
 			if(to == 0){
 				to = towerNum;
-				//System.out.println("From: " + from + ", To: " + to);
 				try {
 					state.makeMove(from-1, to-1);// -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
 				} catch (TowersOfHanoiIllegalMoveException e) {

@@ -23,6 +23,7 @@ public class DiskPrompt extends JFrame{
 		this.add(doneButton,BorderLayout.SOUTH);
 		this.setPreferredSize(new Dimension(300, 100));
 		this.pack();
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
 	

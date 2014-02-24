@@ -4,6 +4,9 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
 
+
+import javax.swing.JFrame;
+
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 /**
  * Main class that launches a GUI version of Towers of Hanoi
@@ -32,9 +35,9 @@ public static void main (String [] args){
 	            		continue;
 	            	    }					
 				}
-				WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);
-                Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);//creates close event
-				System.out.println("making : " + disks);//closes prompt
+				prompt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//sets close operation so it doesn't kill the program when we close the frame
+				WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);//creates close event
+                Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);//closes prompt
 				GameGUI gui = new GameGUI();
 				gui.setState(new TowersOfHanoiState(disks));
 	}
