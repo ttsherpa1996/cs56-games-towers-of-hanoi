@@ -13,7 +13,7 @@ public class CmdLineHanoi{
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
 
 	System.out.println("Attempting to open the GUI");
-	HanoiTimerGUI gui = new HanoiTimerGUI();
+	GameGUI gui = new GameGUI();
 	System.out.println("Continuing on");
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
@@ -39,8 +39,10 @@ public class CmdLineHanoi{
 					   //gives might not have been
 					   //initliazed error
 					   //otherwise
-	if (disks < 3) //minimum 3 disks
+	if (disks < 3){ //minimum 3 disks
 	    disks = 3;
+	}
+	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
 	//gui.setTowers(letsPlay.getTowers());
 	gui.setState(letsPlay);

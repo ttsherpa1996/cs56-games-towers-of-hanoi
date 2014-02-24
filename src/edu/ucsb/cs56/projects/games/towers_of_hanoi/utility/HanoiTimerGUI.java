@@ -19,12 +19,12 @@ public class HanoiTimerGUI {
 	private JLabel TimeDisplay;
 	private JFrame frame;
 	private JPanel MainTimePanel;
-	private GamePanel gp;
 	
     
     public HanoiTimerGUI() {
 	System.out.println("Making JFrame...");
 	frame = new JFrame();
+	//frame.setResizable(false);
 	System.out.println("JFrame made, setting close operation...");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         System.out.println("Making JLabels/JPanels...");
@@ -58,10 +58,6 @@ public class HanoiTimerGUI {
 	MainTimePanel.add(TimePanel, BorderLayout.NORTH);
 	MainTimePanel.add(StartButton, BorderLayout.SOUTH);
 	
-	gp = new GamePanel();
-	gp.setPreferredSize(new Dimension(500,200));
-
-	frame.add(gp,BorderLayout.SOUTH);	
     frame.add(MainTimePanel,BorderLayout.NORTH);
 	frame.pack();
     frame.setVisible(true);
@@ -86,10 +82,6 @@ public class HanoiTimerGUI {
 			GameTimer.stop();
 		}
 	}
-	
-    public void setState(TowersOfHanoiState s){
-    	gp.setState(s);		
-    }
 
     public static void main (String [] args) {
 		
