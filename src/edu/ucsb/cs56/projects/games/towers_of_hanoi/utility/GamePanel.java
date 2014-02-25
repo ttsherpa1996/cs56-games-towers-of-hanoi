@@ -92,16 +92,23 @@ public class GamePanel extends JPanel {
 		
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			if(from == 0){				
+			if(from == 0){
+				if(arg0.getSource() instanceof JButton){
+					((JButton)arg0.getSource()).setEnabled(false);//Disables the button clicked
+				}
 				from = towerNum;
 				return;
 			}
 			if(to == 0){
+				
 				to = towerNum;
 				try {
 					state.makeMove(from-1, to-1);// -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
 				} catch (TowersOfHanoiIllegalMoveException e) {
 					System.out.println("Illegal Move");
+				}
+				for(Component c: GamePanel.this.getComponents()){//re-enables all the buttons so user can make next move
+					c.setEnabled(true);
 				}
 				GamePanel.this.repaint();
 				if(state.solved()){
