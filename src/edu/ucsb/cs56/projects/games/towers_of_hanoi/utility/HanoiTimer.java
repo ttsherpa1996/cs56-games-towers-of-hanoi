@@ -8,8 +8,9 @@ import java.util.GregorianCalendar;
 import javax.swing.JLabel;
 
 /**
- * @author Aaron Wexler
+ * 
  * This is a timer class that will begin running as soon as it is created. A JLabel is required for it to display in format mm:ss
+ * @author Aaron Wexler / amwexler
  */
 public class HanoiTimer {
 	private long startTime = 0;
