@@ -11,10 +11,6 @@ public class CmdLineHanoi{
 
 
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
-
-	System.out.println("Attempting to open the GUI");
-	GameGUI gui = new GameGUI();
-	System.out.println("Continuing on");
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
 
@@ -44,8 +40,8 @@ public class CmdLineHanoi{
 	}
 	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
-	//gui.setTowers(letsPlay.getTowers());
-	gui.setState(letsPlay);
+
+
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
 

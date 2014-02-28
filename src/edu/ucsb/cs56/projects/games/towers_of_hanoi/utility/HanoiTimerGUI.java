@@ -22,13 +22,9 @@ public class HanoiTimerGUI {
 	
     
     public HanoiTimerGUI() {
-	System.out.println("Making JFrame...");
 	frame = new JFrame();
-	//frame.setResizable(false);
-	System.out.println("JFrame made, setting close operation...");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        System.out.println("Making JLabels/JPanels...");
-	System.out.flush();
+        System.out.flush();
 	TimeDisplay = new JLabel("0",JLabel.CENTER);
         TimeDisplay.setForeground(Color.black);
         TimeDisplay.setBackground(Color.white);
@@ -40,7 +36,6 @@ public class HanoiTimerGUI {
 		
 	TimePanel = new JPanel(new BorderLayout());
         TimePanel.add(TimeDisplay, BorderLayout.CENTER);
-	System.out.println("Making GameTimer");
 	GameTimer = new HanoiTimer(TimeDisplay);
 	GameTimer.SetTimeElapsedText();
 		
@@ -61,7 +56,6 @@ public class HanoiTimerGUI {
     frame.add(MainTimePanel,BorderLayout.NORTH);
 	frame.pack();
     frame.setVisible(true);
-	System.out.println("Starting Timer, GUI should be displaying");	
 	GameTimer.start();
     }
 	

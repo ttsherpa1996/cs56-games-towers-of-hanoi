@@ -8,8 +8,8 @@ import java.util.GregorianCalendar;
 import javax.swing.JLabel;
 
 /**
- Class that acts as a timer. Contains methods
- to start, restart, and stop.  Must be called with an applicable JLabel to update.
+ * @author Aaron Wexler
+ * This is a timer class that will begin running as soon as it is created. A JLabel is required for it to display in format mm:ss
  */
 public class HanoiTimer {
 	private long startTime = 0;
@@ -48,9 +48,9 @@ public class HanoiTimer {
 	}
 	
 	/**
-	 * Starts timer if it is not already running
+	 * If stopped, the timer will restart. Otherwise, do nothing
 	 */
-	public void start() {
+	public void start() {//a start method that acts as a continue was not included in this class because this game would never make use of it
 		if(!stopped)return;
 		startTime = System.currentTimeMillis();
 		stopped = false;
