@@ -1,244 +1,78 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
+
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.GregorianCalendar;
+
+import javax.swing.JLabel;
 
 /**
- Class that invokes threads to act as a timer. Contains methods
- to start, restart, and stop.  Must be called with an applicable JLabel to update.
+ * 
+ * This is a timer class that will begin running as soon as it is created. A JLabel is required for it to display in format mm:ss
+ * @author Aaron Wexler / amwexler
  */
 public class HanoiTimer {
-	
-	long MiliSeconds = 1000;
-	long TimeElapsed = 0;
-	private Thread MainTimerThread;
-	private volatile boolean Continue = false;
-	private volatile boolean Restart = false;
-	private JLabel TimeOutput;
-	private int ThreadRunning = 0;
-	
-	//POSSIBLY IMPLEMENT HanoiTimer ?
-	//EveryNMilliseconds(n, time_label); ?
-	//UpdateEveryNMilliseconds(1000); ?
+	private long startTime = 0;
+	private JLabel timeLabel = null;
+	private boolean stopped = true;
 	
 	/**
-	 no arg constructor.
+	 * Consructs a new HanoiTimer and starts the timer running.
+	 * @param label The label that will receive the formatted elapsed time.
 	 */
-	public HanoiTimer() {
-		MiliSeconds = 1000;
-		TimeElapsed = 0;
-	}
-	
-	/**
-	 Constructor that sets the delay between
-	 Thread job completion (delay between how long "seconds" are).
-	 @param long inputMiliSeconds
-	 */
-	public HanoiTimer(long inputMiliSeconds) {
-		TimeElapsed = 0;
-		MiliSeconds = inputMiliSeconds;
-	}
-	
-	/**
-	 Restarts the "timer" thread at 0.
-	 @param JLabel inputlabel JLabel passed in such that it can be formatted
-	 for TimeElapsed.
-	 */
-	public void restart(JLabel inputLabel) {
-		TimeOutput = inputLabel;
-		Continue = true;
-		Restart = true;
-		
-		ThreadRunning++;
-		final int CurrentThread = ThreadRunning;
-		
-		TimeElapsed = 0;
-		
-		final Runnable Linker = new Runnable() {
-			public void run() {
-				SetTimeElapsedText(TimeOutput);
-			}
-		};
-		
-		MainTimerThread = new Thread() {
-			public void run() {
-				try {
-					synchronized (this) {
-						while (Continue && Restart && ThreadRunning==CurrentThread) {
-							SwingUtilities.invokeAndWait(Linker);
-							Thread.sleep(MiliSeconds);
-							IncrementTimeElapsed();
-						}
-					}
-					Thread.sleep(100000000);
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		MainTimerThread.start();
-	}
-	
-	/**
-	 Starts the "timer" thread and continues where it left off.
-	 @param JLabel inputlabel JLabel passed in such that it can be formatted
-	 for TimeElapsed.
-	 */
-	public void start(JLabel inputLabel) {
-		TimeOutput = inputLabel;
-		
-		Continue = true;
-		Restart = false;
-		
-		ThreadRunning++;
-		final int CurrentThread = ThreadRunning;
-		
-		final Runnable Linker = new Runnable() {
-			public void run() {
-				SetTimeElapsedText(TimeOutput);
-			}
-		};
-		
-		MainTimerThread = new Thread() {
-			public void run() {
-				try {
-					synchronized (this) {
-						while (Continue && !Restart && ThreadRunning==CurrentThread) {
-							SwingUtilities.invokeAndWait(Linker);
-							Thread.sleep(MiliSeconds);
-							IncrementTimeElapsed();
-						}
-					}
-					Thread.sleep(100000000);
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		MainTimerThread.start();
-	}
-	
-	/**
-	 Stops the "timer" threads active and acts as a stopped screen.
-	 @param JLabel inputlabel JLabel passed in such that it can be formatted
-	 for TimeElapsed.
-	 */
-	public void stop(JLabel inputLabel) {
-		TimeOutput = inputLabel;
-		
-		Continue = false;
-		Restart = false;
-		
-		final Runnable Linker = new Runnable() {
-			public void run() {
-				SetTimeElapsedText(TimeOutput);
-			}
-		};
-		
-		MainTimerThread = new Thread() {
-			public void run() {
-				try {
-					synchronized (this) {
-						while (!Continue && !Restart) {
-							SwingUtilities.invokeAndWait(Linker);
-						}
-					}
-				}
-				catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		};
-		MainTimerThread.start();
-	}
-	
-	/**
-	 Sets the current TimeElapsed on a
-	 JLabel with proper formatting.
-	 @param JLabel inputlabel JLabel passed in such that it can be formatted
-	 for TimeElapsed.
-	 */
-	public void SetTimeElapsedText(JLabel inputLabel) {
-		long tmp = TimeElapsed;
-		long hours = 0;
-		long mins = 0;
-		long secs = 0;
-		String Hrs;
-		String Mins;
-		String Secs;
-		
-		if (TimeElapsed >= 86400) {
-			TimeElapsed = 0;
-			tmp = TimeElapsed;
-		}
-		if (tmp < 86400 && tmp >= 3600) {
-			hours = tmp/3600;
-			tmp = tmp - hours*3600;
-		}
-		if (tmp < 3600 && tmp >= 60) {
-			mins = tmp/60;
-			tmp = tmp - mins*60;
-		}
-		if (tmp < 60 && tmp >= 0) {
-			secs = tmp;
-		}
-		
-		if (hours<10) {
-			Hrs = "0" + hours;
-		}
-		else {
-			Hrs = "" + hours;
-		}
-		if (mins < 10) {
-			Mins = "0" + mins;
-		}
-		else {
-			Mins = "" + mins;
-		}
-		
-		if (secs < 10) {
-			Secs = "0" + secs;
-		}
-		else {
-			Secs = "" + secs;
-		}
-		
-		inputLabel.setText(Hrs+":"+Mins+":"+Secs);
-	}
-	/**
-	 Increments TimeElapsed variable
-	 */
-	private synchronized void IncrementTimeElapsed(){
-		TimeElapsed++;
-	}
-	
-	/**
-	 Sets TimeElapsed for nonmember access
-	 @param long input
-	 */
-	
-	public void SetTimeElapsed(long input) {
-		TimeElapsed = input;
-	}
-	
-	/**
-	 Gets TimeElapsed for nonmemberaccess
-	 @return long TimeElapsed
-	*/
-	public long getTimeElapsed() { 
-		return TimeElapsed; 
-	}
-	
-   /* public static void main (String [] args) {
-		
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
+	public HanoiTimer(JLabel label) {
+		timeLabel=label;
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+
+            @Override
             public void run() {
-                //createAndShowGUI();
-				new HanoiTimer();
+               updateTimer();
             }
-        });
-	}*/
+        }, 0, 1000);
+        start();
+	}
+	
+	public void updateTimer() {
+		if(timeLabel != null) {
+			this.SetTimeElapsedText();
+		}
+	}
+	
+	/**
+	 * Stops the timer then restarts it.
+	 */
+	public void restart() { 
+		this.stop();
+		this.start();
+	}
+	
+	/**
+	 * If stopped, the timer will restart. Otherwise, do nothing
+	 */
+	public void start() {//a start method that acts as a continue was not included in this class because this game would never make use of it
+		if(!stopped)return;
+		startTime = System.currentTimeMillis();
+		stopped = false;
+	}
+	
+	/**
+	 * Stops processing of timer events
+	 */
+	public void stop() {
+		stopped = true;
+	}
+	
+	/**
+	 * Sets the label text of the JLabel to the elapsed time in proper format
+	 */
+	public void SetTimeElapsedText() {
+		if(stopped || (timeLabel == null))return;
+		GregorianCalendar gc = new GregorianCalendar();
+		gc.setTimeInMillis(System.currentTimeMillis() - startTime);
+		String time = String.format("%02d", gc.get(GregorianCalendar.MINUTE)) + ":" + String.format("%02d", gc.get(GregorianCalendar.SECOND));
+		timeLabel.setText(time);
+	}
+  
 }

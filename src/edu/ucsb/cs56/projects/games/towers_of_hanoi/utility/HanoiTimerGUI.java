@@ -1,8 +1,12 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 
 import javax.swing.*;
+
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 /**
  Example class of how to use HanoiTimer.  Uses buttons and a 
@@ -18,63 +22,61 @@ public class HanoiTimerGUI {
 	
     
     public HanoiTimerGUI() {
-		frame = new JFrame("Tester for Hanoi Timer");
+	frame = new JFrame();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-		TimeDisplay = new JLabel("0",JLabel.CENTER);
+        System.out.flush();
+	TimeDisplay = new JLabel("0",JLabel.CENTER);
         TimeDisplay.setForeground(Color.black);
         TimeDisplay.setBackground(Color.white);
         TimeDisplay.setOpaque(true);
         TimeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
         TimeDisplay.setPreferredSize(new Dimension(100, 50));
 		
-		MainTimePanel = new JPanel(new BorderLayout());
+	MainTimePanel = new JPanel(new BorderLayout());
 		
-		TimePanel = new JPanel(new BorderLayout());
+	TimePanel = new JPanel(new BorderLayout());
         TimePanel.add(TimeDisplay, BorderLayout.CENTER);
+	GameTimer = new HanoiTimer(TimeDisplay);
+	GameTimer.SetTimeElapsedText();
 		
-		GameTimer = new HanoiTimer(1000);
-		GameTimer.SetTimeElapsedText(TimeDisplay);
+	JButton RestartButton = new JButton("Restart Timer");
+	RestartButton.addActionListener(new RestartListener());
 		
-		JButton RestartButton = new JButton("Restart Timer");
-		RestartButton.addActionListener(new RestartListener());
+	JButton StopButton = new JButton("Stop Timer");
+	StopButton.addActionListener(new StopListener());
 		
-		JButton StopButton = new JButton("Stop Timer");
-		StopButton.addActionListener(new StopListener());
+	JButton StartButton = new JButton("Start Timer");
+	StartButton.addActionListener(new StartListener());
 		
-		JButton StartButton = new JButton("Start Timer");
-		StartButton.addActionListener(new StartListener());
-		
-		MainTimePanel.add(StopButton, BorderLayout.EAST);
-		MainTimePanel.add(RestartButton, BorderLayout.WEST);
-		MainTimePanel.add(TimePanel, BorderLayout.NORTH);
-		MainTimePanel.add(StartButton, BorderLayout.SOUTH);
-		
-        frame.setContentPane(MainTimePanel);
-		frame.pack();
-        frame.setVisible(true);
-		
-		GameTimer.start(TimeDisplay);
+	MainTimePanel.add(StopButton, BorderLayout.EAST);
+	MainTimePanel.add(RestartButton, BorderLayout.WEST);
+	MainTimePanel.add(TimePanel, BorderLayout.NORTH);
+	MainTimePanel.add(StartButton, BorderLayout.SOUTH);
+	
+    frame.add(MainTimePanel,BorderLayout.NORTH);
+	frame.pack();
+    frame.setVisible(true);
+	GameTimer.start();
     }
 	
 	class StartListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.start(TimeDisplay);
+			GameTimer.start();
 		}
 	}
 	
 	class RestartListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.restart(TimeDisplay);
+			GameTimer.restart();
 		}
 	}
 	
 	class StopListener implements ActionListener {
 		public void actionPerformed(ActionEvent event){
-			GameTimer.stop(TimeDisplay);
+			GameTimer.stop();
 		}
 	}
-	
+
     public static void main (String [] args) {
 		
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {

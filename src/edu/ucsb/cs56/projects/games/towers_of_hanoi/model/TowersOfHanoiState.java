@@ -258,5 +258,16 @@ public class TowersOfHanoiState{
 	else 
 	    return false;
     }
+    
+    /**
+     * 
+     */
+    public void handleWin(){
+    	int optimalSolution = (int) Math.pow(2,numOfDisks) - 1; // 2^n - 1 is the optimal solution for the game
+    	System.out.println("Congratulations! You solved the game in " + this.getNumOfMoves()
+                               + " steps. Optimal solution would have been " + optimalSolution
+                               + " steps." ); 
+    }
+
 
 }

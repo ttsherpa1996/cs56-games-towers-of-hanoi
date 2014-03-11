@@ -1,4 +1,5 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.view;
+import edu.ucsb.cs56.projects.games.towers_of_hanoi.utility.*;
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 import java.util.Scanner;
 
@@ -10,7 +11,6 @@ public class CmdLineHanoi{
 
 
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
-
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
 
@@ -35,10 +35,12 @@ public class CmdLineHanoi{
 					   //gives might not have been
 					   //initliazed error
 					   //otherwise
-	if (disks < 3) //minimum 3 disks
+	if (disks < 3){ //minimum 3 disks
 	    disks = 3;
-    
+	}
+	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
+
 
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
