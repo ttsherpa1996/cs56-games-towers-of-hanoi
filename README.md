@@ -1,6 +1,10 @@
 # cs56-games-towers-of-hanoi
 
-W14 ready! (Jakob Staahl)
+project history
+===============
+```
+ W14 | bkiefer13 5pm | amwexler | (jstaahl) A towers of hanoi GAME (not a solver or a simulation or an animation of the algorithm!)
+```
 
 A command line towers of hanoi game---not just a simulation, but a GAME
 
