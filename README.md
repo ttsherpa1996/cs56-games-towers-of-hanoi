@@ -3,6 +3,8 @@
 project history
 ===============
 ```
+ YES | mastergberry | amwexler | (jstaahl) A towers of hanoi GAME (not a solver or a simulation or an animation of the algorithm!)
+
  W14 | bkiefer13 5pm | amwexler | (jstaahl) A towers of hanoi GAME (not a solver or a simulation or an animation of the algorithm!)
 ```
 
