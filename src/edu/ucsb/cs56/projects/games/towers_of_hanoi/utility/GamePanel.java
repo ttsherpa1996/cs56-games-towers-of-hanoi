@@ -23,8 +23,8 @@ public class GamePanel extends JPanel {
 	private final int TOWER_OFFSET;//Horizontal space between towers
 	private final int INITIAL_OFFSET;//the offset from the top of the panel
 	private int sideOffset;//The horizontal space between the side towers and the side of the Panel
-	private final Color TOWER_COLOR = Color.RED;//color of towers
-	private final Color DISK_COLOR = Color.BLUE;//color of disks
+    private final Color TOWER_COLOR = new Color(0xe4cbab);//color of towers
+	private final Color DISK_COLOR = new Color(0x8c4f00);//color of disks
 	private int maxDisk;//value of the biggest disk possible on the towers
 	private int towerHeight;//vertical height of the towers
 	private int to, from;//to: the value of the tower that a disk is being moved to; from: value of the tower that a disk is being moved from
