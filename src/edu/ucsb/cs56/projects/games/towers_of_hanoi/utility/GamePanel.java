@@ -116,6 +116,7 @@ public class GamePanel extends JPanel {
 		    if(timer!=null){
 			timer.stop();
 		    }
+		    JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!"); 
 		}
 		to = 0;  from = 0;
 		return;
