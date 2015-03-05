@@ -116,7 +116,31 @@ public class GamePanel extends JPanel {
 		    if(timer!=null){
 			timer.stop();
 		    }
-		    JOptionPane.showMessageDialog(null, "Congratulations! You've won the game!"); 
+
+		    Object[] options =  { "Replay", "Quit Game" };
+		    
+		    JOptionPane pane = new JOptionPane("Congratulations! You've won the game!", JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null, options);
+
+		    JDialog dialog = pane.createDialog(GamePanel.this, "Towers");
+		    dialog.show();
+		    
+		    Object selectedValue = pane.getValue();
+		    
+		    if (selectedValue == null){
+
+			//stuff
+		    }
+		    
+		    if (selectedValue.equals("Replay")){
+			System.out.println("Selected Replay");
+		    }
+		    else{
+			System.out.println("Selected Quit");
+			System.exit(0);
+		    }
+
+
+		    
 		}
 		to = 0;  from = 0;
 		return;
