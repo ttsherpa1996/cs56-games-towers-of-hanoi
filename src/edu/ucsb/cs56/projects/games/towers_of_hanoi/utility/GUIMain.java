@@ -5,6 +5,10 @@ import java.awt.event.WindowEvent;
 
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 /**
@@ -22,42 +26,39 @@ public class GUIMain {
 
     public static void startGame() {
 
-	
-	//pop-up that asks for the number of disks
-	DiskPrompt prompt = new DiskPrompt();
-	int disks = 0;
-
 	// This allows us to restart the game without quitting the program
-	if (gui != null){
+	if (gui != null){ // Is a replay, close the old game, clear the disks prompt, show it
 	    gui.close();
 	}
 
-	//loop checks the input from prompt every second to check if it is valid 
-	// (valid is if it is >= 3)
-	while(disks < 3){
-	    try {
-		Thread.sleep(1000);//1 second delay to keep CPU usage down
-	    } catch (InterruptedException e) {
-		e.printStackTrace();
-	    }
-	    
-	    if(prompt.getString()==null)
-		continue;
-	    
-	    try {
-		disks = Integer.parseInt(prompt.getString());
-	    } catch (NumberFormatException e) {
-		disks = 0;
-		continue;
-	    }					
-	}
+	// Contents of dialogue
+	String[] options = {"Play"};
+	JPanel panel = new JPanel();
+	JLabel lbl = new JLabel("Number of Disks (3 to 25): ");
+	JTextField txt = new JTextField(10);
+	panel.add(lbl);
+	panel.add(txt);
 	
-	//prompt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//sets close operation so it doesn't kill the program when we close the frame
-	//	WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);//creates close event
-	prompt.setVisible(false);
-	prompt.dispose();
+	int number = 0;
+
+	// Keep looping through the dialogue until a valid number is entered
+	while (number > 25 || number < 3) {
+
+	    // Show the dialogue
+	    JOptionPane.showOptionDialog(null, panel, "Towers of Hanoi", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
+
+	    // ... wait for user to click "Play" ...
+
+	    // Try to parse the number they entered
+	    try {
+		number = Integer.parseInt(txt.getText());
+	    } catch (NumberFormatException nf) {
+		continue; // NaN -> show dialogue again
+	    }
+	}
+
 	gui = new GameGUI();
-	gui.setState(new TowersOfHanoiState(disks));
+	gui.setState(new TowersOfHanoiState(number));
     }
 
 }
