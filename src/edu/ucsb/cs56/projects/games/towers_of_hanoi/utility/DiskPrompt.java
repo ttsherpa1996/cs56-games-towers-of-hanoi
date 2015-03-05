@@ -13,12 +13,12 @@ import javax.swing.JLabel;
 
 public class DiskPrompt extends JFrame{
         
-    private static String diskInput;
-    private static JTextField txt = new JTextField();
-    private static JLabel label = new JLabel("Number of Disks");
+    private String diskInput;
+    private JTextField txt = new JTextField();
+    private JLabel label = new JLabel("Number of Disks");
     	
     public DiskPrompt(){
-	super("How many disks?");
+	super("Towers of Hanoi");
 	
 	JButton playButton = new JButton("Play");
 	playButton.addActionListener(new playButtonListener());

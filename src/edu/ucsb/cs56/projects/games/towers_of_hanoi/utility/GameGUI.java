@@ -57,7 +57,8 @@ public class GameGUI {
     	gamePanel.setState(s);		
     }
 
-    public void close(){
+    public void close() {
 	frame.setVisible(false);
+	frame.dispose();
     }
 }

@@ -30,7 +30,6 @@ public class GUIMain {
 	//pop-up that asks for the number of disks
 	DiskPrompt prompt = new DiskPrompt();
 	
-	//String input = prompt.getString();
 	int disks = 0;
 
 	//loop checks the input from prompt every second to check if it is valid 
