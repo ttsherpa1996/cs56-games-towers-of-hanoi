@@ -126,16 +126,10 @@ public class GamePanel extends JPanel {
 		    
 		    Object selectedValue = pane.getValue();
 		    
-		    if (selectedValue == null){
-
-			//stuff
-		    }
-		    
 		    if (selectedValue.equals("Replay")){
 			System.out.println("Selected Replay");
 			GUIMain.startGame();
-		    }
-		    else{
+		    } else {
 			System.out.println("Selected Quit");
 			System.exit(0);
 		    }

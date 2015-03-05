@@ -25,6 +25,7 @@ public class GameGUI {
     public GameGUI() {
 	frame = new JFrame();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
 	System.out.flush();
 	timeDisplay = new JLabel("0",JLabel.CENTER);
         timeDisplay.setForeground(Color.black);
@@ -48,6 +49,10 @@ public class GameGUI {
 	frame.add(gamePanel,BorderLayout.CENTER);	
 	frame.add(mainTimePanel,BorderLayout.NORTH);
 	frame.pack();
+	
+	// centers the window
+	frame.setLocationRelativeTo(null);
+	
 	frame.setVisible(true);
 	gameTimer.start();
     }
@@ -58,7 +63,6 @@ public class GameGUI {
     }
 
     public void close() {
-	frame.setVisible(false);
 	frame.dispose();
     }
 }

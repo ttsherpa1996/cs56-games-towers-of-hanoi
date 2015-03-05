@@ -1,5 +1,4 @@
 package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
-
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
@@ -22,15 +21,16 @@ public class GUIMain {
     }    
 
     public static void startGame() {
-	if (gui != null){
-	    gui.close();
-	    gui = null;
-	}
+
 	
 	//pop-up that asks for the number of disks
 	DiskPrompt prompt = new DiskPrompt();
-	
 	int disks = 0;
+
+	// This allows us to restart the game without quitting the program
+	if (gui != null){
+	    gui.close();
+	}
 
 	//loop checks the input from prompt every second to check if it is valid 
 	// (valid is if it is >= 3)
@@ -52,9 +52,10 @@ public class GUIMain {
 	    }					
 	}
 	
-	prompt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//sets close operation so it doesn't kill the program when we close the frame
-	WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);//creates close event
-	Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);//closes prompt
+	//prompt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//sets close operation so it doesn't kill the program when we close the frame
+	//	WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);//creates close event
+	prompt.setVisible(false);
+	prompt.dispose();
 	gui = new GameGUI();
 	gui.setState(new TowersOfHanoiState(disks));
     }
