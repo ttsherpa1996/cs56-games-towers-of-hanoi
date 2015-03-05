@@ -15,11 +15,18 @@ import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
  */
 public class GUIMain {
 	
+    private static GameGUI gui;
+
     public static void main (String [] args){
 	startGame();
     }    
 
     public static void startGame() {
+	if (gui != null){
+	    gui.close();
+	    gui = null;
+	}
+	
 	//pop-up that asks for the number of disks
 	DiskPrompt prompt = new DiskPrompt();
 	
@@ -49,7 +56,7 @@ public class GUIMain {
 	prompt.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);//sets close operation so it doesn't kill the program when we close the frame
 	WindowEvent wev = new WindowEvent(prompt, WindowEvent.WINDOW_CLOSING);//creates close event
 	Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);//closes prompt
-	GameGUI gui = new GameGUI();
+	gui = new GameGUI();
 	gui.setState(new TowersOfHanoiState(disks));
     }
 

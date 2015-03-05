@@ -56,4 +56,8 @@ public class GameGUI {
     public void setState(TowersOfHanoiState s){
     	gamePanel.setState(s);		
     }
+
+    public void close(){
+	frame.setVisible(false);
+    }
 }
