@@ -16,17 +16,25 @@ import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 public class GUIMain {
 	
     public static void main (String [] args){
-	
-	DiskPrompt prompt = new DiskPrompt();//pop-up that asks for the number of disks
+	startGame();
+    }    
+
+    public static void startGame() {
+	//pop-up that asks for the number of disks
+	DiskPrompt prompt = new DiskPrompt();
 	
 	//String input = prompt.getString();
 	int disks = 0;
-	while(disks < 3){//loop checks the input from prompt every second to check if it is valid (valid is if it is >= 3)
+
+	//loop checks the input from prompt every second to check if it is valid 
+	// (valid is if it is >= 3)
+	while(disks < 3){
 	    try {
 		Thread.sleep(1000);//1 second delay to keep CPU usage down
 	    } catch (InterruptedException e) {
 		e.printStackTrace();
-	}
+	    }
+	    
 	    if(prompt.getString()==null)
 		continue;
 	    
@@ -43,5 +51,6 @@ public class GUIMain {
 	Toolkit.getDefaultToolkit().getSystemEventQueue().postEvent(wev);//closes prompt
 	GameGUI gui = new GameGUI();
 	gui.setState(new TowersOfHanoiState(disks));
-    }    
+    }
+
 }
