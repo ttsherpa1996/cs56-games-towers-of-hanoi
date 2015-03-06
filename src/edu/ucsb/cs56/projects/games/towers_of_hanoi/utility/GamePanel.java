@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
 	
 	private ArrayList<ArrayList<Integer>> towers;
 	private HanoiTimer timer;
-	
+
 	public GamePanel() {
 		super();
 		
@@ -127,8 +127,7 @@ public class GamePanel extends JPanel {
 					// -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
 					state.makeMove(fromTower-1, toTower-1);
 				} catch (TowersOfHanoiIllegalMoveException e) {
-					// Make this message display in the GUI
-					System.out.println("Illegal Move");
+					JOptionPane.showMessageDialog(null, "Disks can only be placed on other disks\n who are larger than them or on empty towers.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
 				}
 			
 				for(Component c: GamePanel.this.getComponents()){//re-enables all the buttons so user can make next move
