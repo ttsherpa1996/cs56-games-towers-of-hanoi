@@ -45,7 +45,11 @@ First, enter how many disks you want for each tower to have.  The minimum is 3. 
 
 ![](http://i.imgur.com/AJe7vRb.jpg)
 
+If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
+
 ![](http://i.imgur.com/AHuwF0Z.jpg)
+
+Upon completion, the game provides feedback.
 
 ![](http://i.imgur.com/40CfSXl.jpg)
 
