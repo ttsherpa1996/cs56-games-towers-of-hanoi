@@ -13,7 +13,7 @@ public class TowersOfHanoiState{
     
     private boolean isGameSolved = false;
     private int numOfMoves = 0;
-    private int numOfDisks;
+    public int numOfDisks;
     private ArrayList<ArrayList<Integer>> towers 
 	= new ArrayList<ArrayList<Integer>>(3); //the 3 towers and their disks will be stored here
     
