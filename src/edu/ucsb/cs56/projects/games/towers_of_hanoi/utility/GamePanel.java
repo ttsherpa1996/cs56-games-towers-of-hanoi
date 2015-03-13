@@ -213,12 +213,12 @@ public class GamePanel extends JPanel {
         @Override
         public void mouseExited(MouseEvent e) {
         	current.towerColor = new Color(0xe4cbab);
-        	this.repaint();
+        	current.repaint();
         }
         @Override
         public void mouseEntered(MouseEvent e) {
         	current.towerColor = new Color(0xf4eadd);
-        	this.repaint();
+        	current.repaint();
         }
 
     }
