@@ -135,16 +135,9 @@ public class GamePanel extends JPanel {
 
 		@Override
         public void mouseClicked(MouseEvent e) {
-            System.out.println(":MOUSE_CLICK_EVENT: " + selectedTower);
-
             if(fromTower == 0) {
 				
-				/*
-				if(arg0.getSource() instanceof JButton){
-					//Disables the button clicked
-					((JButton)arg0.getSource()).setEnabled(false);
-				}
-				*/
+				
 
 				fromTower = selectedTower;
 				return;
@@ -160,10 +153,7 @@ public class GamePanel extends JPanel {
 					JOptionPane.showMessageDialog(null, "Disks can only be placed on other disks\n who are larger than them or on empty towers.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
 				}
 			
-				/*for(Component c: GamePanel.this.getComponents()){//re-enables all the buttons so user can make next move
-					c.setEnabled(true);
-				}
-				*/
+				
 		
 				GamePanel.this.repaint();
 			
@@ -204,27 +194,22 @@ public class GamePanel extends JPanel {
 			}
 
 			toTower = 0;  fromTower = 0;
-			
-			//actionPerformed(arg0);
 
 
         }
 
         @Override
         public void mouseReleased(MouseEvent e) {
-        	System.out.println(":MOUSE_RELEASED_EVENT:");
         }
         @Override
         public void mousePressed(MouseEvent e) {
-        	System.out.println("----------------------------------\n:MOUSE_PRESSED_EVENT:");
         }
         @Override
         public void mouseExited(MouseEvent e) {
-        	System.out.println(":MOUSE_EXITED_EVENT:");
         }
         @Override
         public void mouseEntered(MouseEvent e) {
-        	System.out.println(":MOUSE_ENTER_EVENT:");
+        	
         }
 
     }
