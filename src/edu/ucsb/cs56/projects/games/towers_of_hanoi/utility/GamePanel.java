@@ -46,11 +46,11 @@ public class GamePanel extends JPanel {
 		sideOffset = (this.getWidth()-(3*TOWER_WIDTH) - (2 * TOWER_OFFSET))/2;
 		
 		//adds 1 button for each tower
-		for (int tower = 1; tower <= 3; tower ++) {
+		/* for (int tower = 1; tower <= 3; tower ++) {
 			JButton temp = new JButton(Integer.toString(tower));
 			temp.addActionListener(new TowerButtonListener(tower));
 			this.add(temp);
-		}
+		} */
 	}
 	
 	public void paintComponent(Graphics g) {
