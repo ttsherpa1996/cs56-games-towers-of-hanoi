@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import java.awt.EventQueue;
+
 
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 
@@ -35,18 +37,20 @@ public class GUIMain {
 		JPanel panel = new JPanel();
 		JLabel lbl = new JLabel("Number of Disks (3 to 25): ");
 		JTextField txt = new JTextField(10);
+
 		panel.add(lbl);
 		panel.add(txt);
-		
-		int numberOfDisks = 0;
+
+     		int numberOfDisks = 0;
 
 		// Keep looping through the dialogue until a valid number is entered
 		while (numberOfDisks > 25 || numberOfDisks < 3) {
 
 			// Show the dialogue
-			int userResponse = JOptionPane.showOptionDialog(null, panel, "Towers of Hanoi", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options , options[0]);
+		    int userResponse = JOptionPane.showOptionDialog(null, panel, "Towers of Hanoi", JOptionPane.NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, options, null);
 			
 			if (userResponse == JOptionPane.CLOSED_OPTION) {
+
             	// User clicked the 'x' button
             	System.exit(0);
         	}
