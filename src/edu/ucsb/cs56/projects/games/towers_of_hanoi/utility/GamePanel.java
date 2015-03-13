@@ -129,7 +129,24 @@ public class GamePanel extends JPanel {
         public void mouseClicked(MouseEvent e) {
             System.out.println(":MOUSE_CLICK_EVENT: " + selectedTower);
         }
-	}
+        @Override
+        public void mouseReleased(MouseEvent e) {
+        	System.out.println(":MOUSE_RELEASED_EVENT:");
+        }
+        @Override
+        public void mousePressed(MouseEvent e) {
+        	System.out.println("----------------------------------\n:MOUSE_PRESSED_EVENT:");
+        }
+        @Override
+        public void mouseExited(MouseEvent e) {
+        	System.out.println(":MOUSE_EXITED_EVENT:");
+        }
+        @Override
+        public void mouseEntered(MouseEvent e) {
+        	System.out.println(":MOUSE_ENTER_EVENT:");
+        }
+
+    }
 	
 	private class TowerButtonListener implements ActionListener {
 	
