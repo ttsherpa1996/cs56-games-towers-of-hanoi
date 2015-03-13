@@ -46,8 +46,8 @@ public class GameGUI {
 		gamePanel.setPreferredSize(new Dimension(500,200));
 		gamePanel.setTimer(gameTimer);
 
-		JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.")
-		instructions.setFont(new Font("Verdana",1,20));
+		JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.");
+		instructions.setFont(new Font("Verdana",1,14));
 
 		frame.add(gamePanel,BorderLayout.CENTER);	
 		frame.add(mainTimePanel,BorderLayout.NORTH);
