@@ -139,14 +139,13 @@ public class GamePanel extends JPanel {
 				current = tower2;
 			} else {
 				current = tower3;
-			}
+			} 
 		}
 
 		@Override
         public void mouseClicked(MouseEvent e) {
             if(fromTower == 0) {
 				fromTower = selectedTower;
-				current.towerColor = new Color(0xf4eadd);
 				return;
 			}
 			
@@ -213,10 +212,13 @@ public class GamePanel extends JPanel {
         }
         @Override
         public void mouseExited(MouseEvent e) {
+        	current.towerColor = new Color(0xe4cbab);
+        	this.repaint();
         }
         @Override
         public void mouseEntered(MouseEvent e) {
-
+        	current.towerColor = new Color(0xf4eadd);
+        	this.repaint();
         }
 
     }
