@@ -121,6 +121,7 @@ public class GamePanel extends JPanel {
 	private class TowerPanelListener implements MouseListener {
 		int selectedTower;
 
+
 		public TowerPanelListener(int selectedTower){
 			this.selectedTower = selectedTower;
 		}
@@ -128,6 +129,78 @@ public class GamePanel extends JPanel {
 		@Override
         public void mouseClicked(MouseEvent e) {
             System.out.println(":MOUSE_CLICK_EVENT: " + selectedTower);
+
+            if(fromTower == 0) {
+				
+				/*
+				if(arg0.getSource() instanceof JButton){
+					//Disables the button clicked
+					((JButton)arg0.getSource()).setEnabled(false);
+				}
+				*/
+
+				fromTower = selectedTower;
+				return;
+			}
+			
+			if(toTower == 0){
+				toTower = selectedTower;
+
+				try {
+					// -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
+					state.makeMove(fromTower-1, toTower-1);
+				} catch (TowersOfHanoiIllegalMoveException e) {
+					JOptionPane.showMessageDialog(null, "Disks can only be placed on other disks\n who are larger than them or on empty towers.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
+				}
+			
+				/*for(Component c: GamePanel.this.getComponents()){//re-enables all the buttons so user can make next move
+					c.setEnabled(true);
+				}
+				*/
+		
+				GamePanel.this.repaint();
+			
+				// Check to see if game solved
+				if (state.solved()) {
+					state.handleWin();
+
+					if (timer != null) {
+						timer.stop();
+					}
+
+					Object[] options =  { "Replay", "Quit Game" };
+
+					int optimalSolution = (int) Math.pow(2,state.numOfDisks) - 1; // 2^n - 1 is the optimal solution for the game
+
+					String winMessage = "Congratulations! You won the game in " + state.getNumOfMoves() + " moves!\n Optimal solution would have been " + optimalSolution + " moves.";
+
+			
+					JOptionPane pane = new JOptionPane(winMessage, JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null, options);
+
+					JDialog dialog = pane.createDialog(GamePanel.this, "Towers of Hanoi");
+					dialog.show();
+			
+					Object selectedValue = pane.getValue();
+			
+					if (selectedValue.equals("Replay")) {
+						System.out.println("Selected Replay");
+						GUIMain.startGame();
+					} else {
+						System.out.println("Selected Quit");
+						System.exit(0);
+					}
+				}
+		
+				toTower = 0;  fromTower = 0;
+				
+				return;
+			}
+
+			toTower = 0;  fromTower = 0;
+			
+			actionPerformed(arg0);
+
+
         }
         @Override
         public void mouseReleased(MouseEvent e) {
@@ -147,7 +220,7 @@ public class GamePanel extends JPanel {
         }
 
     }
-	
+	/*
 	private class TowerButtonListener implements ActionListener {
 	
 		//this is the number that represents the tower
@@ -228,5 +301,6 @@ public class GamePanel extends JPanel {
 			actionPerformed(arg0);
 		}
 	}
+	*/
 }
 
