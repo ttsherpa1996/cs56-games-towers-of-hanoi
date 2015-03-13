@@ -44,13 +44,11 @@ public class GamePanel extends JPanel {
 		INITIAL_OFFSET = 50;
 		
 		sideOffset = (this.getWidth()-(3*TOWER_WIDTH) - (2 * TOWER_OFFSET))/2;
-		
-		//adds 1 button for each tower
-		/* for (int tower = 1; tower <= 3; tower ++) {
-			JButton temp = new JButton(Integer.toString(tower));
-			temp.addActionListener(new TowerButtonListener(tower));
-			this.add(temp);
-		} */
+
+		tower1.addMouseListener(new TowerPanelListener(1));
+		tower2.addMouseListener(new TowerPanelListener(2));
+		tower3.addMouseListener(new TowerPanelListener(3));
+
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -115,6 +113,19 @@ public class GamePanel extends JPanel {
 	public void setTimer(HanoiTimer timer) {
 		this.timer = timer;
 	}
+
+	private class TowerPanelListener implements MouseListener {
+		int selectedTower;
+
+		public TowerPanelListener(int selectedTower){
+			this.selectedTower = selectedTower;
+		}
+
+		@Override
+        public void mouseClicked(MouseEvent e) {
+            System.out.println(":MOUSE_CLICK_EVENT: " + selectedTower);
+        }
+	}
 	
 	private class TowerButtonListener implements ActionListener {
 	
@@ -155,6 +166,7 @@ public class GamePanel extends JPanel {
 		
 				GamePanel.this.repaint();
 			
+				// Check to see if game solved
 				if (state.solved()) {
 					state.handleWin();
 
