@@ -28,7 +28,9 @@ public class GamePanel extends JPanel {
 	private int towerHeight;//vertical height of the towers
 	private int toTower, fromTower;//toTower: the number of the tower that a disk is being moved to; fromTower: value of the tower that a disk is being moved from
 	private TowersOfHanoiState state;
-	
+	private TowerPanel tower1;
+	private TowerPanel tower2;
+	private TowerPanel tower3;
 	private ArrayList<ArrayList<Integer>> towers;
 	private HanoiTimer timer;
 
@@ -43,7 +45,7 @@ public class GamePanel extends JPanel {
 		
 		sideOffset = (this.getWidth()-(3*TOWER_WIDTH) - (2 * TOWER_OFFSET))/2;
 		
-		//adds 3 buttons for each tower
+		//adds 1 button for each tower
 		for (int tower = 1; tower <= 3; tower ++) {
 			JButton temp = new JButton(Integer.toString(tower));
 			temp.addActionListener(new TowerButtonListener(tower));
@@ -65,7 +67,24 @@ public class GamePanel extends JPanel {
 				// X coordinate of this tower
 				int towerX = sideOffset + (TOWER_WIDTH+TOWER_OFFSET)*(tower-1);
 				g.fillRect(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
-			
+				
+				if (tower == 1) {
+					if (tower1 == null) this.tower1 = new TowerPanel();
+					tower1.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
+					this.tower1.setOpaque(false);
+					this.add(this.tower1); 
+				} else if (tower == 2) {
+					if (tower2 == null) this.tower2 = new TowerPanel();
+					tower2.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
+					this.tower2.setOpaque(false);
+					this.add(this.tower2);
+				} else {
+					if (tower3 == null) this.tower3 = new TowerPanel();
+					tower3.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
+					this.tower3.setOpaque(false);
+					this.add(this.tower3);
+				}
+
 				for (int j=towers.get(tower-1).size();j > 0;j--) {
 					int offset =  DISK_OFFSET*((towers.get(tower-1).size()-j)-1);
 					int y = (towerHeight + TOWER_OFFSET) - offset;
