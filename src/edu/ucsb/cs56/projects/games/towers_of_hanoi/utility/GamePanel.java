@@ -49,10 +49,6 @@ public class GamePanel extends JPanel {
 		
 		sideOffset = (this.getWidth()-(3*TOWER_WIDTH) - (2 * TOWER_OFFSET))/2;
 
-		tower1.addMouseListener(new TowerPanelListener(1));
-		tower2.addMouseListener(new TowerPanelListener(2));
-		tower3.addMouseListener(new TowerPanelListener(3));
-
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -92,7 +88,7 @@ public class GamePanel extends JPanel {
 						this.tower3 = new TowerPanel();
 						tower3.addMouseListener(new TowerPanelListener(3));
 					}
-					
+
 					tower3.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
 					this.tower3.setOpaque(false);
 					this.add(this.tower3);
