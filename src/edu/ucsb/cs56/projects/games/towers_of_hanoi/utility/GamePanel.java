@@ -71,17 +71,28 @@ public class GamePanel extends JPanel {
 				g.fillRect(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
 				
 				if (tower == 1) {
-					if (tower1 == null) this.tower1 = new TowerPanel();
+					if (tower1 == null) {
+						this.tower1 = new TowerPanel();
+						tower1.addMouseListener(new TowerPanelListener(1));
+					}
+
 					tower1.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
 					this.tower1.setOpaque(false);
 					this.add(this.tower1); 
 				} else if (tower == 2) {
-					if (tower2 == null) this.tower2 = new TowerPanel();
+					if (tower2 == null){
+						this.tower2 = new TowerPanel();
+						tower2.addMouseListener(new TowerPanelListener(2));
+					} 
 					tower2.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
 					this.tower2.setOpaque(false);
 					this.add(this.tower2);
 				} else {
-					if (tower3 == null) this.tower3 = new TowerPanel();
+					if (tower3 == null) {
+						this.tower3 = new TowerPanel();
+						tower3.addMouseListener(new TowerPanelListener(3));
+					}
+					
 					tower3.setBounds(towerX,INITIAL_OFFSET,TOWER_WIDTH,towerHeight);
 					this.tower3.setOpaque(false);
 					this.add(this.tower3);
