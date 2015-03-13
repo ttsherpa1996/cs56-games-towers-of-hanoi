@@ -149,7 +149,7 @@ public class GamePanel extends JPanel {
 				try {
 					// -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
 					state.makeMove(fromTower-1, toTower-1);
-				} catch (TowersOfHanoiIllegalMoveException e) {
+				} catch (TowersOfHanoiIllegalMoveException ex) {
 					JOptionPane.showMessageDialog(null, "Disks can only be placed on other disks\n who are larger than them or on empty towers.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
 				}
 			
@@ -198,10 +198,11 @@ public class GamePanel extends JPanel {
 
 			toTower = 0;  fromTower = 0;
 			
-			actionPerformed(arg0);
+			//actionPerformed(arg0);
 
 
         }
+
         @Override
         public void mouseReleased(MouseEvent e) {
         	System.out.println(":MOUSE_RELEASED_EVENT:");
