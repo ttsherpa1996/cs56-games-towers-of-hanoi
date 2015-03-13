@@ -144,10 +144,15 @@ public class GamePanel extends JPanel {
 					}
 
 					Object[] options =  { "Replay", "Quit Game" };
-			
-					JOptionPane pane = new JOptionPane("Congratulations! You've won the game!", JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null, options);
 
-					JDialog dialog = pane.createDialog(GamePanel.this, "Towers");
+					int optimalSolution = (int) Math.pow(2,state.numOfDisks) - 1; // 2^n - 1 is the optimal solution for the game
+
+					String winMessage = "Congratulations! You won the game in " + state.getNumOfMoves() + " moves!\n Optimal solution would have been " + optimalSolution + " moves.";
+
+			
+					JOptionPane pane = new JOptionPane(winMessage, JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null, options);
+
+					JDialog dialog = pane.createDialog(GamePanel.this, "Towers of Hanoi");
 					dialog.show();
 			
 					Object selectedValue = pane.getValue();
