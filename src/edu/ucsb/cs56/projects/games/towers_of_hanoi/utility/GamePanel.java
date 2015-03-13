@@ -127,19 +127,10 @@ public class GamePanel extends JPanel {
 
 	private class TowerPanelListener implements MouseListener {
 		int selectedTower;
-		TowerPanel current;
 
 
 		public TowerPanelListener(int selectedTower){
 			this.selectedTower = selectedTower;
-
-			if (selectedTower == 1){
-				current = tower1;
-			} else if (selectedTower == 2){
-				current = tower2;
-			} else {
-				current = tower3;
-			} 
 		}
 
 		@Override
@@ -200,8 +191,6 @@ public class GamePanel extends JPanel {
 			}
 
 			toTower = 0;  fromTower = 0;
-
-
         }
 
         @Override
@@ -212,13 +201,9 @@ public class GamePanel extends JPanel {
         }
         @Override
         public void mouseExited(MouseEvent e) {
-        	current.towerColor = new Color(0xe4cbab);
-        	current.repaint();
         }
         @Override
         public void mouseEntered(MouseEvent e) {
-        	current.towerColor = new Color(0xf4eadd);
-        	current.repaint();
         }
 
     }
