@@ -55,4 +55,4 @@ Upon completion, the game provides feedback.
 
 #### Instructions for GUI Version
 
-When the game starts, so will the timer.  Click on a button to select that tower as the "from" tower and click on another button to select that as the "to" tower.  This will move the disk from the "from" Tower and to the "to" tower.  The "from" tower's button will deactivate upon selection so you cannot go from and to the same tower, plus it makes it easier to keep track of whether you are on the "to" or "from" selection.
+When the game starts, so will the timer.  Click on a tower to select its top disk and then click on another tower to move that disk there. Move all three disks to another tower to win the game.
