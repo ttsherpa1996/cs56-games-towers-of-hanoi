@@ -54,10 +54,13 @@ public class CmdLineHanoi{
 	    Scanner userInput = new Scanner(System.in);
 
 	    input = userInput.nextLine().split(" +"); //input string array split between spaces
-            if (input[0].equals("q"))
+            if (input.length == 1 && input[0].equals("q"))
                 return; //Quit program if they typed q
 
-
+	    if (input.length < 2) {
+		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");
+		continue loops;
+	    }
 	    for ( int x = 0; x < 2; x++ ){
 		input[x] = input[x].replaceAll("[-\\D+]",""); //Get rid of anything in string that's not a digit
 		if ( input[x].equals("")){ //If there were no digits, then it's incorrect format.
