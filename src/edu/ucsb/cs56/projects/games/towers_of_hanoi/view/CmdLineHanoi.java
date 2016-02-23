@@ -6,21 +6,20 @@ import java.util.Scanner;
 
 public class CmdLineHanoi{
 
-
-
-
-
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
+
+	System.out.println("Tower of Hanoi: \n\nThe goal of this game is to move all the disks from the leftmost tower to either the middle or rightmost tower,\nadhering to the following rules:\n   1) Move only one disk at a time.\n   2) A larger disk may not be placed ontop of a smaller disk.\n   3) All disks, except the one being moved, must be on a tower.\n\n");
+
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
-
+	
 	if (args.length == 0){
-
+	    
 	    System.out.println("Proper Usage: CmdLineHanoi is a command line interface that takes in an integer (Number of disks) for a Towers of Hanoi game.");
-
+	    
 	    System.exit(0);
 	}
-
+	
 	else if (args.length > 0) {
 	    try {
 		disks = Integer.parseInt(args[0]);
@@ -30,7 +29,7 @@ public class CmdLineHanoi{
 		return;
 	    }
 	}
-
+	
 	disks = Integer.parseInt(args[0]); //Redudant, but compiler
 					   //gives might not have been
 					   //initliazed error
@@ -40,14 +39,14 @@ public class CmdLineHanoi{
 	}
 	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
-
-
+	
+	
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
-
-
+	    
+	    
 	    System.out.println(letsPlay); // Print game state with tostring method to System.out
-
+	    
 
 	    System.out.println("Please input two integers for the from tower and to tower to indicate a move. (Type 'q' to quit).");
 
