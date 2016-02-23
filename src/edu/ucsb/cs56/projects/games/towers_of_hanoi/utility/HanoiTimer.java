@@ -47,7 +47,20 @@ public class HanoiTimer {
 		this.stop();
 		this.start();
 	}
-	
+
+    	/**
+	 * Pauses and unpauses the timer.
+	 */
+	 public void pause() {
+	     if (!this.paused) {
+		this.paused = true;
+		this.stopped = true;
+	     }
+	     else if (this.paused) {
+		 this.paused = false;
+		 this.stopped = false;
+	     }
+	 }
 	/**
 	 * If stopped, the timer will restart. Otherwise, do nothing
 	 */
