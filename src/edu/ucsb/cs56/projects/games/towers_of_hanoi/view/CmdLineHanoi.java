@@ -6,20 +6,21 @@ import java.util.Scanner;
 
 public class CmdLineHanoi{
 
+
+
+
+
     public static void main(String [] args) throws TowersOfHanoiState.TowersOfHanoiIllegalMoveException{
-
-	System.out.println("Tower of Hanoi: \n\nThe goal of this game is to move all the disks from the leftmost tower to either the middle or rightmost tower,\nadhering to the following rules:\n   1) Move only one disk at a time.\n   2) A larger disk may not be placed ontop of a smaller disk.\n   3) All disks, except the one being moved, must be on a tower.\n\n");
-
 	int disks, fromTower, toTower;
 	String[] input; // For while loop later where we prompt user for a move
-	
+
 	if (args.length == 0){
-	    
+
 	    System.out.println("Proper Usage: CmdLineHanoi is a command line interface that takes in an integer (Number of disks) for a Towers of Hanoi game.");
-	    
+
 	    System.exit(0);
 	}
-	
+
 	else if (args.length > 0) {
 	    try {
 		disks = Integer.parseInt(args[0]);
@@ -29,24 +30,24 @@ public class CmdLineHanoi{
 		return;
 	    }
 	}
-	
+
 	disks = Integer.parseInt(args[0]); //Redudant, but compiler
 					   //gives might not have been
 					   //initliazed error
 					   //otherwise
-	if (disks < 3){ //minimum 3 disks
-	    disks = 3;
+	if (disks < 3 || disks > 25){ //minimum 3 disks
+	    System.err.println("Argument must be an integer");
 	}
 	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
-	
-	
+
+
 	loops: //For redirecting code if input is correct, kind of like a goto statement
 	while (! letsPlay.getIsGameSolved()){ //While game is not solved
-	    
-	    
+
+
 	    System.out.println(letsPlay); // Print game state with tostring method to System.out
-	    
+
 
 	    System.out.println("Please input two integers for the from tower and to tower to indicate a move. (Type 'q' to quit).");
 
@@ -54,10 +55,10 @@ public class CmdLineHanoi{
 
 	    input = userInput.nextLine().split(" +"); //input string array split between spaces
             if (input.length == 1 && input[0].equals("q"))
-                return; //Quit program if they typed ONLY 'q'. does not quit if 'q 3' was typed (e.g. if it was a typo 
+                return; //Quit program if they typed q
 
 	    if (input.length < 2) {
-		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");//If there was only 1 input it is incorrect format.
+		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");
 		continue loops;
 	    }
 	    for ( int x = 0; x < 2; x++ ){
