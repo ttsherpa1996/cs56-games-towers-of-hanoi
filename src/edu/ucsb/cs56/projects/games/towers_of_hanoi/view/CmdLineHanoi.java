@@ -54,10 +54,10 @@ public class CmdLineHanoi{
 
 	    input = userInput.nextLine().split(" +"); //input string array split between spaces
             if (input.length == 1 && input[0].equals("q"))
-                return; //Quit program if they typed q
+                return; //Quit program if they typed ONLY 'q'. does not quit if 'q 3' was typed (e.g. if it was a typo 
 
 	    if (input.length < 2) {
-		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");
+		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");//If there was only 1 input it is incorrect format.
 		continue loops;
 	    }
 	    for ( int x = 0; x < 2; x++ ){
