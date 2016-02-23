@@ -31,7 +31,7 @@ public class GamePanel extends JPanel {
     private int maxDisk;//value of the biggest disk possible on the towers
     private int towerHeight;//vertical height of the towers
     private int toTower, fromTower;//toTower: the number of the tower that a disk is being moved to; fromTower: value of the tower that a disk is being moved from
-    private TowersOfHanoiState state;
+    public static TowersOfHanoiState state = new TowersOfHanoiState();
     private TowerPanel tower1;
     private TowerPanel tower2;
     private TowerPanel tower3;
@@ -143,10 +143,12 @@ public class GamePanel extends JPanel {
 	    
 	    if(toTower == 0){
 		toTower = selectedTower;
-		
+
 		try {
 		    // -1 because the game calls the towers by 1-3 while the code calls them 0-2.  This also allows for 0 to represent unassigned for this method
 		    state.makeMove(fromTower-1, toTower-1);
+		    GameGUI.countDisplay.setText(state.getNumOfMoves()+"");
+		    //GameGUI.gamePanel.add(GameGUI.countDisplay, BorderLayout.CENTER);
 		} catch (TowersOfHanoiIllegalMoveException ex) {
 		    JOptionPane.showMessageDialog(null, "This is an illegal move. You may not place a larger disk on top of a smaller disk.\nPlease place a smaller disk on a larger disk or place it on top of an empty tower.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
 		}

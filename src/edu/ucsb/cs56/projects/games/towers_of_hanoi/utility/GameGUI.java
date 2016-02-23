@@ -19,9 +19,9 @@ public class GameGUI {
     private JLabel timeDisplay;
     private JFrame frame;
     private JPanel mainTimePanel;
-    private GamePanel gamePanel;
-    // private JButton pauseButton;
-    
+    public static GamePanel gamePanel;
+    public static JLabel countDisplay;
+
     public GameGUI() {
 	frame = new JFrame();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -34,31 +34,39 @@ public class GameGUI {
 	timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
 	timeDisplay.setPreferredSize(new Dimension(100, 50));
 	
+	countDisplay = new JLabel("" + GamePanel.state.getNumOfMoves(),JLabel.CENTER);
+	countDisplay.setForeground(Color.black);
+	countDisplay.setBackground(Color.white);
+	countDisplay.setOpaque(true);
+	countDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
+	countDisplay.setPreferredSize(new Dimension(50, 50));
+
 	mainTimePanel = new JPanel(new BorderLayout());
-	
 	timePanel = new JPanel(new BorderLayout());
 	timePanel.add(timeDisplay, BorderLayout.CENTER);
 	gameTimer = new HanoiTimer(timeDisplay);
 	gameTimer.SetTimeElapsedText();
 	mainTimePanel.add(timePanel, BorderLayout.NORTH);
-		
+	
 	gamePanel = new GamePanel();
-	gamePanel.setPreferredSize(new Dimension(500,200));
+	gamePanel.setPreferredSize(new Dimension(500,220));
 	gamePanel.setTimer(gameTimer);
+	gamePanel.add(countDisplay, BorderLayout.SOUTH);
+
 
 	JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.");
 	instructions.setFont(new Font("Verdana",1,14));
 	
 	frame.add(gamePanel,BorderLayout.CENTER);	
 	frame.add(mainTimePanel,BorderLayout.NORTH);
-		frame.add(instructions,BorderLayout.SOUTH);
-		frame.pack();
-		
-		// centers the window
-		frame.setLocationRelativeTo(null);
-		
-		frame.setVisible(true);
-		gameTimer.start();
+	frame.add(instructions,BorderLayout.SOUTH);
+	frame.pack();
+	
+	// centers the window
+	frame.setLocationRelativeTo(null);
+	
+	frame.setVisible(true);
+	gameTimer.start();
     }
     
     
