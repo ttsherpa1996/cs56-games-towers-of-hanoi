@@ -26,7 +26,7 @@ public class CmdLineHanoi{
 		disks = Integer.parseInt(args[0]);
 	    } catch (NumberFormatException e) {
 		disks = 0;
-		System.err.println("Argument must be an integer");
+		System.err.println("Argument must be an integer.");
 		return;
 	    }
 	}
@@ -36,7 +36,8 @@ public class CmdLineHanoi{
 					   //initliazed error
 					   //otherwise
 	if (disks < 3 || disks > 25){ //minimum 3 disks
-	    System.err.println("Argument must be an integer");
+	    System.err.println("Argument must be an integer between 3 and 25.");
+	    System.exit(0);
 	}
 	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game

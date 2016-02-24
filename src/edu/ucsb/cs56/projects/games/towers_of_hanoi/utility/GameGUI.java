@@ -23,7 +23,7 @@ public class GameGUI {
     public static JLabel countDisplay;
     private JButton pauseTimer;
     private String PAUSE_STR_LIT = "Pause"; 
-    public GameGUI() {
+    public GameGUI(int window_x, int window_y) {
 	frame = new JFrame();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
           
@@ -55,7 +55,7 @@ public class GameGUI {
 	mainTimePanel.add(timePanel, BorderLayout.NORTH);
 	
 	gamePanel = new GamePanel();
-	gamePanel.setPreferredSize(new Dimension(500,220));
+	gamePanel.setPreferredSize(new Dimension(window_x,window_y));
 	gamePanel.setTimer(gameTimer);
 
 
@@ -65,6 +65,7 @@ public class GameGUI {
 	frame.add(mainTimePanel,BorderLayout.NORTH);
 	frame.add(instructions,BorderLayout.SOUTH);
 	frame.pack();
+	System.out.flush();
 	
 	// centers the window
 	frame.setLocationRelativeTo(null);
@@ -82,11 +83,11 @@ public class GameGUI {
 	frame.dispose();
     }
 
-    pauseTimer.addActionListener(new ActionListener(){
-	    @Override
-	   public void  actionPerformed (ActionEvent e){
-	gameTimer.pause();
-    }
-	});
+    //    pauseTimer.addActionListener(new ActionListener(){
+    //	    @Override
+    //	   public void  actionPerformed (ActionEvent e){
+    //	gameTimer.pause();
+    //}
+    //	});
 }
      

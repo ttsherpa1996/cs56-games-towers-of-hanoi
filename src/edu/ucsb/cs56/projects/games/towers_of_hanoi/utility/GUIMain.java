@@ -63,8 +63,9 @@ public class GUIMain {
 		continue; // NaN -> show dialogue again
 	    }
 	}
-	
-	gui = new GameGUI();
+	int winx = numberOfDisks * 50 + 100;
+	int winy = 100 + (numberOfDisks)*20;
+	gui = new GameGUI(winx, winy);
 	gui.setState(new TowersOfHanoiState(numberOfDisks));
     }
 }
