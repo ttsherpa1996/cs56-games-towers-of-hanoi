@@ -136,6 +136,16 @@ public class GamePanel extends JPanel {
 	
 	@Override
         public void mouseClicked(MouseEvent e) {
+	    if(GameGUI.pauseTimer.getText().equals(GameGUI.PAUSE_STR_LIT)){
+		timer.pause();
+		GameGUI.pauseTimer.setText(GameGUI.RESUME_STR_LIT);
+	    }
+
+	    else if(GameGUI.pauseTimer.getText().equals(GameGUI.RESUME_STR_LIT)){
+		timer.resume();
+                GameGUI.pauseTimer.setText(GameGUI.PAUSE_STR_LIT);
+            }
+
             if(fromTower == 0) {
 		fromTower = selectedTower;
 		return;

@@ -21,8 +21,9 @@ public class GameGUI {
     private JPanel mainTimePanel;
     public static GamePanel gamePanel;
     public static JLabel countDisplay;
-    private JButton pauseTimer;
-    private String PAUSE_STR_LIT = "Pause"; 
+    public static JButton pauseTimer;
+    public static String PAUSE_STR_LIT = "Pause"; 
+    public static String RESUME_STR_LIT = "Resume"; 
     public GameGUI(int window_x, int window_y) {
 	frame = new JFrame();
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
