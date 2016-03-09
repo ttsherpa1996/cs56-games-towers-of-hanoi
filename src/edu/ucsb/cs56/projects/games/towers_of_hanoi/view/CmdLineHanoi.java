@@ -26,7 +26,7 @@ public class CmdLineHanoi{
 		disks = Integer.parseInt(args[0]);
 	    } catch (NumberFormatException e) {
 		disks = 0;
-		System.err.println("Argument must be an integer");
+		System.err.println("Argument must be an integer.");
 		return;
 	    }
 	}
@@ -35,8 +35,9 @@ public class CmdLineHanoi{
 					   //gives might not have been
 					   //initliazed error
 					   //otherwise
-	if (disks < 3){ //minimum 3 disks
-	    disks = 3;
+	if (disks < 3 || disks > 25){ //minimum 3 disks
+	    System.err.println("Argument must be an integer between 3 and 25.");
+	    System.exit(0);
 	}
 	//disks=18;
 	TowersOfHanoiState letsPlay = new TowersOfHanoiState(disks); // Our instance of the game
@@ -54,10 +55,13 @@ public class CmdLineHanoi{
 	    Scanner userInput = new Scanner(System.in);
 
 	    input = userInput.nextLine().split(" +"); //input string array split between spaces
-            if (input[0].equals("q"))
+            if (input.length == 1 && input[0].equals("q"))
                 return; //Quit program if they typed q
 
-
+	    if (input.length < 2) {
+		System.out.println("Incorrect format. Please input two integers seperated with a space (i.e. \"0 2\").");
+		continue loops;
+	    }
 	    for ( int x = 0; x < 2; x++ ){
 		input[x] = input[x].replaceAll("[-\\D+]",""); //Get rid of anything in string that's not a digit
 		if ( input[x].equals("")){ //If there were no digits, then it's incorrect format.

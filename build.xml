@@ -48,7 +48,7 @@
 </target>
 
 <target name="input-runargs" unless="args" description="prompts for command line arguments if necessary">
-  <input addProperty="args" message="Type the desired command line arguments:"/>
+  <input addProperty="args" message="Enter the number of disks, Between 3 and 25:"/>
 </target>
 
 

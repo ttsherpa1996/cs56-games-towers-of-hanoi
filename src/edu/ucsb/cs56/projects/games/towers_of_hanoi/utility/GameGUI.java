@@ -14,59 +14,80 @@ import java.util.ArrayList;
 */
 public class GameGUI {
 	
-	private HanoiTimer gameTimer;
-	private JPanel timePanel;
-	private JLabel timeDisplay;
-	private JFrame frame;
-	private JPanel mainTimePanel;
-	private GamePanel gamePanel;
+    private HanoiTimer gameTimer;
+    private JPanel timePanel;
+    private JLabel timeDisplay;
+    private JFrame frame;
+    private JPanel mainTimePanel;
+    public static GamePanel gamePanel;
+    public static JLabel countDisplay;
+    private JButton pauseTimer;
+    private String PAUSE_STR_LIT = "Pause"; 
+    public GameGUI(int window_x, int window_y) {
+	frame = new JFrame();
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+          
+	System.out.flush();
+	timeDisplay = new JLabel("Time:"+ "0",JLabel.CENTER);
+	timeDisplay.setForeground(Color.black);
+	timeDisplay.setBackground(Color.white);
+	timeDisplay.setOpaque(true);
+	timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
+	timeDisplay.setPreferredSize(new Dimension(100, 50));
 	
+	countDisplay = new JLabel("Move Counter:" + GamePanel.state.getNumOfMoves(), JLabel.CENTER);
+	countDisplay.setForeground(Color.WHITE);
+	countDisplay.setBackground(Color.DARK_GRAY);
+	countDisplay.setOpaque(true);
+	countDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
+	countDisplay.setPreferredSize(new Dimension(200, 50));
+
+	pauseTimer = new JButton(PAUSE_STR_LIT);
 	
-	public GameGUI() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	mainTimePanel = new JPanel(new BorderLayout());
+	timePanel = new JPanel(new BorderLayout());
+	timePanel.add(timeDisplay, BorderLayout.CENTER);
+	timePanel.add(pauseTimer, BorderLayout.WEST);
+	timePanel.add(countDisplay, BorderLayout.EAST);
 
-		System.out.flush();
-		timeDisplay = new JLabel("0",JLabel.CENTER);
-		timeDisplay.setForeground(Color.black);
-		timeDisplay.setBackground(Color.white);
-		timeDisplay.setOpaque(true);
-		timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
-		timeDisplay.setPreferredSize(new Dimension(100, 50));
-			
-		mainTimePanel = new JPanel(new BorderLayout());
-			
-		timePanel = new JPanel(new BorderLayout());
-		timePanel.add(timeDisplay, BorderLayout.CENTER);
-		gameTimer = new HanoiTimer(timeDisplay);
-		gameTimer.SetTimeElapsedText();
-		mainTimePanel.add(timePanel, BorderLayout.NORTH);
-		
-		gamePanel = new GamePanel();
-		gamePanel.setPreferredSize(new Dimension(500,200));
-		gamePanel.setTimer(gameTimer);
-
-		JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.");
-		instructions.setFont(new Font("Verdana",1,14));
-
-		frame.add(gamePanel,BorderLayout.CENTER);	
-		frame.add(mainTimePanel,BorderLayout.NORTH);
-		frame.add(instructions,BorderLayout.SOUTH);
-		frame.pack();
-		
-		// centers the window
-		frame.setLocationRelativeTo(null);
-		
-		frame.setVisible(true);
-		gameTimer.start();
-	}
+	gameTimer = new HanoiTimer(timeDisplay);
+	gameTimer.SetTimeElapsedText();
+	mainTimePanel.add(timePanel, BorderLayout.NORTH);
 	
-	
-	public void setState(TowersOfHanoiState s){
-		gamePanel.setState(s);		
-	}
+	gamePanel = new GamePanel();
+	gamePanel.setPreferredSize(new Dimension(window_x,window_y));
+	gamePanel.setTimer(gameTimer);
 
-	public void close() {
+
+	JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.");
+	instructions.setFont(new Font("Verdana",1,14));
+	frame.add(gamePanel,BorderLayout.CENTER);
+	frame.add(mainTimePanel,BorderLayout.NORTH);
+	frame.add(instructions,BorderLayout.SOUTH);
+	frame.pack();
+	System.out.flush();
+	
+	// centers the window
+	frame.setLocationRelativeTo(null);
+	
+	frame.setVisible(true);
+	gameTimer.start();
+    }
+    
+    
+    public void setState(TowersOfHanoiState s){
+	gamePanel.setState(s);		
+    }
+    
+    public void close() {
 	frame.dispose();
-	}
+    }
+
+    //    pauseTimer.addActionListener(new ActionListener(){
+    //	    @Override
+    //	   public void  actionPerformed (ActionEvent e){
+    //	gameTimer.pause();
+    //}
+    //	});
 }
+     

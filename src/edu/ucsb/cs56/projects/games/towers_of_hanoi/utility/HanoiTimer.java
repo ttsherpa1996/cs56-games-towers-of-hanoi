@@ -16,7 +16,7 @@ public class HanoiTimer {
 	private long startTime = 0;
 	private JLabel timeLabel = null;
 	private boolean stopped = true;
-	
+    private boolean paused = false;
 	/**
 	 * Consructs a new HanoiTimer and starts the timer running.
 	 * @param label The label that will receive the formatted elapsed time.
@@ -47,7 +47,20 @@ public class HanoiTimer {
 		this.stop();
 		this.start();
 	}
-	
+
+    	/**
+	 * Pauses and unpauses the timer.
+	 */
+	 public void pause() {
+	     if (!this.paused) {
+		this.paused = true;
+		this.stopped = true;
+	     }
+	     else if (this.paused) {
+		 this.paused = false;
+		 this.stopped = false;
+	     }
+	 }
 	/**
 	 * If stopped, the timer will restart. Otherwise, do nothing
 	 */
