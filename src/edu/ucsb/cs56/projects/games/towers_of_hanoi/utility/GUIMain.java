@@ -59,7 +59,12 @@ public class GUIMain {
 	    // Try to parse the number they entered
 	    try {
 		numberOfDisks = Integer.parseInt(txt.getText());
+		if (numberOfDisks < 3 || numberOfDisks >25) {
+		    JOptionPane.showMessageDialog(frame, "Please input a valid integer between 3 and 25 (inclusive)");
+		    continue;
+		}
 	    } catch (NumberFormatException nf) {
+		JOptionPane.showMessageDialog(frame,"Please input a valid integer between 3 and 25 (inclusive)");
 		continue; // NaN -> show dialogue again
 	    }
 	}
