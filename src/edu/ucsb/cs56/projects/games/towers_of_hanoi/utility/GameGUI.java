@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * JLabel.  ActionListeners call the HanoiTimer's start/restart/stop methods.
 */
 public class GameGUI {
-	
+	public static Sound song = new Sound("music/backgroundSong.wav");
     private HanoiTimer gameTimer;
     private JPanel timePanel;
     private JLabel timeDisplay;
@@ -44,7 +44,7 @@ public class GameGUI {
 	countDisplay.setPreferredSize(new Dimension(200, 50));
 
 	pauseTimer = new JButton(PAUSE_STR_LIT);
-	
+
 	mainTimePanel = new JPanel(new BorderLayout());
 	timePanel = new JPanel(new BorderLayout());
 	timePanel.add(timeDisplay, BorderLayout.CENTER);
@@ -83,12 +83,5 @@ public class GameGUI {
     public void close() {
 	frame.dispose();
     }
-
-    //    pauseTimer.addActionListener(new ActionListener(){
-    //	    @Override
-    //	   public void  actionPerformed (ActionEvent e){
-    //	gameTimer.pause();
-    //}
-    //	});
 }
      

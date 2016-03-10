@@ -22,11 +22,12 @@ public class GUIMain {
     
     private static GameGUI gui;
     public static void main (String [] args){
-	startGame();
+		startGame();
     }
     
     public static void startGame() {
-	
+		GameGUI.song.play();
+    	GameGUI.song.loop();
 	// This allows us to restart the game without quitting the program
 	if (gui != null){ // Is a replay, close the old game, clear the disks prompt, show it
 	    gui.close();
