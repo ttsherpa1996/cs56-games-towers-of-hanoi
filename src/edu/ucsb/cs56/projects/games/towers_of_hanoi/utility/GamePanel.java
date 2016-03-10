@@ -40,7 +40,8 @@ public class GamePanel extends JPanel {
     
     public GamePanel() {
     	super();
-
+		GameGUI.pauseTimer.addMouseListener(new PauseTimerListener());
+   		GameGUI.resetGame.addMouseListener(new ResetGameListener());
     	TOWER_WIDTH = 80;
     	DISK_HEIGHT = 10;
     	TOWER_OFFSET = 20;
@@ -53,8 +54,6 @@ public class GamePanel extends JPanel {
     
     public void paintComponent(Graphics g) {
     	super.paintComponent(g);
-
-   		GameGUI.pauseTimer.addMouseListener(new PauseTimerListener());
 
     	if (towers == null) {
     		return;
@@ -158,6 +157,26 @@ public class GamePanel extends JPanel {
     	}
     }
 
+    public class ResetGameListener implements MouseListener {
+    	@Override
+    	public void mouseClicked(MouseEvent e) {
+    		GUIMain.startGame();
+    	}
+
+    	@Override
+    	public void mouseReleased(MouseEvent e) {
+    	}
+    	@Override
+    	public void mousePressed(MouseEvent e) {
+    	}
+    	@Override
+    	public void mouseExited(MouseEvent e) {
+    	}
+    	@Override
+    	public void mouseEntered(MouseEvent e) {
+    	}
+    }
+
 
     private class TowerPanelListener implements MouseListener {
     	int selectedTower;
@@ -169,15 +188,6 @@ public class GamePanel extends JPanel {
 
     	@Override
     	public void mouseClicked(MouseEvent e) {
-    		// if(GameGUI.pauseTimer.getText().equals(GameGUI.PAUSE_STR_LIT)){
-    		// 	timer.pause();
-    		// 	GameGUI.pauseTimer.setText(GameGUI.RESUME_STR_LIT);
-    		// }
-
-    		// else if(GameGUI.pauseTimer.getText().equals(GameGUI.RESUME_STR_LIT)){
-    		// 	timer.resume();
-    		// 	GameGUI.pauseTimer.setText(GameGUI.PAUSE_STR_LIT);
-    		// }
 
     		if(fromTower == 0) {
     			fromTower = selectedTower;

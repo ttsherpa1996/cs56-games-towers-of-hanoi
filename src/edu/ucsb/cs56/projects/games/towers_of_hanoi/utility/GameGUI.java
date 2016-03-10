@@ -22,6 +22,8 @@ public class GameGUI {
     public static GamePanel gamePanel;
     public static JLabel countDisplay;
     public static JButton pauseTimer;
+    public static JButton resetGame;
+    public static String RESET_STR_LIT = "Reset";
     public static String PAUSE_STR_LIT = "Pause"; 
     public static String RESUME_STR_LIT = "Resume"; 
     public GameGUI(int window_x, int window_y) {
@@ -36,20 +38,22 @@ public class GameGUI {
 	timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
 	timeDisplay.setPreferredSize(new Dimension(100, 50));
 	
-	countDisplay = new JLabel("Move Counter:" + GamePanel.state.getNumOfMoves(), JLabel.CENTER);
+	countDisplay = new JLabel("Move Count: " + GamePanel.state.getNumOfMoves(), JLabel.CENTER);
 	countDisplay.setForeground(Color.WHITE);
 	countDisplay.setBackground(Color.DARK_GRAY);
 	countDisplay.setOpaque(true);
 	countDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
-	countDisplay.setPreferredSize(new Dimension(200, 50));
+	countDisplay.setPreferredSize(new Dimension(170, 50));
 
 	pauseTimer = new JButton(PAUSE_STR_LIT);
+	resetGame = new JButton(RESET_STR_LIT);
 
 	mainTimePanel = new JPanel(new BorderLayout());
 	timePanel = new JPanel(new BorderLayout());
+	timePanel.add(countDisplay, BorderLayout.NORTH);
 	timePanel.add(timeDisplay, BorderLayout.CENTER);
 	timePanel.add(pauseTimer, BorderLayout.WEST);
-	timePanel.add(countDisplay, BorderLayout.EAST);
+	timePanel.add(resetGame, BorderLayout.EAST);
 
 	gameTimer = new HanoiTimer(timeDisplay);
 	gameTimer.SetTimeElapsedText();
@@ -74,7 +78,6 @@ public class GameGUI {
 	frame.setVisible(true);
 	gameTimer.start();
     }
-    
     
     public void setState(TowersOfHanoiState s){
 	gamePanel.setState(s);		

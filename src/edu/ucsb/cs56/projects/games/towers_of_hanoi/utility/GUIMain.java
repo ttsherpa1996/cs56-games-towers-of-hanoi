@@ -20,7 +20,7 @@ import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 
 public class GUIMain {
     
-    private static GameGUI gui;
+    public static GameGUI gui;
     public static void main (String [] args){
 		startGame();
     }
