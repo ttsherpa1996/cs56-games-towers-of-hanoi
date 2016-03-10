@@ -15,6 +15,7 @@ public class HanoiTimer {
     private GregorianCalendar gc = new GregorianCalendar();
     private long startTime = 0;
     private long pauseTime = 0;
+    private long eTime = 0;
     private JLabel timeLabel = null;
     private boolean stopped = true;
     private boolean paused = false;
@@ -69,34 +70,50 @@ public class HanoiTimer {
     }
 
     public void pause() {
-        pauseTime = System.currentTimeMillis() - startTime;
-        paused = true;
         started = false;
+
+        if(paused == false)
+        {
+        pauseTime = System.currentTimeMillis() - startTime;
+        }
+        paused = true;
+
     }
     public void resume() {
-        stopped = false;
-        paused = false;
+        if(paused == true)
+            eTime = System.currentTimeMillis() - startTime;
+            stopped = false;
+            paused = false;
     }
 
     /**
      * Sets the label text of the JLabel to the elapsed time in proper format
      */
     public void SetTimeElapsedText() {
+
         if(stopped == true || timeLabel == null)
             return;
         else if(paused == false && stopped == false && started == true){
             gc.setTimeInMillis(System.currentTimeMillis() - startTime);
         }
-        else if(paused == true && started == false){
+        else if(paused == true && stopped == false && started == false){
+            System.out.println("pause = " + pauseTime);
             gc.setTimeInMillis(pauseTime);
         }
-        else{
-             gc.setTimeInMillis(System.currentTimeMillis() - pauseTime - startTime);
+        else if(paused == false && stopped == false && started == false){
+            System.out.println("eTime = " + eTime);
+            System.out.println("pause = " + pauseTime);
+            gc.setTimeInMillis(System.currentTimeMillis() - startTime - (eTime - pauseTime) );
+            System.out.println(eTime - pauseTime);
         }
 
         String time = String.format("%02d", gc.get(GregorianCalendar.MINUTE)) 
         + ":" + String.format("%02d", gc.get(GregorianCalendar.SECOND));
         timeLabel.setText(time);
+
+        // long time = gc.get(GregorianCalendar.MILLISECOND);
+        // String timeString = String.format("%04d", gc.get(GregorianCalendar.MILLISECOND)/1000L);
+        // timeLabel.setText(timeString);
     }
 }
 
