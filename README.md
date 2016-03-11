@@ -39,12 +39,15 @@ The game counts the user's moves. When the user completes the puzzle, the game t
 
 ### GUI Version
 
-![](http://i.imgur.com/8C6CbBT.jpg)
-![](/images/mainGUI.png)
+![](http://i.imgur.com/EENXRwP.png)
+
+Instructional window pops up when running the GUI
+
+![](http://i.imgur.com/yzU5bNN.png)
 
 First, enter how many disks you want for each tower to have.  The minimum is 3.  When you have entered a valid number, click "Done".
 
-![](http://i.imgur.com/AJe7vRb.jpg)
+![](http://i.imgur.com/l0ZIceQ.png)
 
 If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
 
