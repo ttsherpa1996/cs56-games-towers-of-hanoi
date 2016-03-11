@@ -62,4 +62,5 @@ Upon completion, the game provides feedback.
 When the game starts, so will the timer.  Click on a tower to select its top disk and then click on another tower to move that disk there. Move all three disks to another tower to win the game.
 
 GUI Audio
+
 Because we included audio into the GUI version of this game, this game will not run through ssh but works perfectly fine on local computer or on CSIL computers (without ssh).
