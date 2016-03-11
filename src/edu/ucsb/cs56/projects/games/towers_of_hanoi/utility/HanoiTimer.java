@@ -74,7 +74,7 @@ public class HanoiTimer {
 
         if(paused == false)
         {
-        pauseTime = System.currentTimeMillis() - startTime;
+            pauseTime = System.currentTimeMillis() - startTime - (eTime - pauseTime);
         }
         paused = true;
 
@@ -110,10 +110,6 @@ public class HanoiTimer {
         String time = String.format("%02d", gc.get(GregorianCalendar.MINUTE)) 
         + ":" + String.format("%02d", gc.get(GregorianCalendar.SECOND));
         timeLabel.setText(time);
-
-        // long time = gc.get(GregorianCalendar.MILLISECOND);
-        // String timeString = String.format("%04d", gc.get(GregorianCalendar.MILLISECOND)/1000L);
-        // timeLabel.setText(timeString);
     }
 }
 
