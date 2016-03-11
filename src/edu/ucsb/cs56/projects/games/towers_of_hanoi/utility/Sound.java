@@ -12,6 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class Sound {
     public Clip clip;
     public Sound(String soundFile) {
+        //soundFile is a .wav audio file from music file
     	try {
     		File file = new File(soundFile);
     		if (file.exists()) {
@@ -41,11 +42,13 @@ public class Sound {
     	}
     }
 
+    //starts the song for the beginning
     public void play(){
         clip.setFramePosition(0);
         clip.start();
     }
 
+    //continuously loops the sound track
     public void loop(){
     	clip.loop(Clip.LOOP_CONTINUOUSLY);
     }

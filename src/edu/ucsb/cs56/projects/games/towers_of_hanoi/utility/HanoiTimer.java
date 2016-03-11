@@ -72,16 +72,19 @@ public class HanoiTimer {
     public void pause() {
         started = false;
 
-        if(paused == false)
-        {
+        if(paused == false) {
+            //pauseTime is the time at which you press the Pause button
+            //Takes into account for the startTime and the previous pause button eTime difference
             pauseTime = System.currentTimeMillis() - startTime - (eTime - pauseTime);
         }
         paused = true;
 
     }
     public void resume() {
-        if(paused == true)
+        if(paused == true) {
+            //eTime is the time at which you press resume
             eTime = System.currentTimeMillis() - startTime;
+        }
             stopped = false;
             paused = false;
     }
@@ -91,22 +94,24 @@ public class HanoiTimer {
      */
     public void SetTimeElapsedText() {
 
-        if(stopped == true || timeLabel == null)
+        if(stopped == true || timeLabel == null){
+            //before the game starts
             return;
+        }
         else if(paused == false && stopped == false && started == true){
+            //when the game first starts, when pause button has not been used yet
             gc.setTimeInMillis(System.currentTimeMillis() - startTime);
         }
         else if(paused == true && stopped == false && started == false){
-            System.out.println("pause = " + pauseTime);
+            //when you press the pause button
             gc.setTimeInMillis(pauseTime);
         }
         else if(paused == false && stopped == false && started == false){
-            System.out.println("eTime = " + eTime);
-            System.out.println("pause = " + pauseTime);
+            //when you press resume
             gc.setTimeInMillis(System.currentTimeMillis() - startTime - (eTime - pauseTime) );
-            System.out.println(eTime - pauseTime);
         }
 
+        //This converts the computed time into a string
         String time = String.format("%02d", gc.get(GregorianCalendar.MINUTE)) 
         + ":" + String.format("%02d", gc.get(GregorianCalendar.SECOND));
         timeLabel.setText(time);

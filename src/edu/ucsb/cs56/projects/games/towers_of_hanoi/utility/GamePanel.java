@@ -50,7 +50,6 @@ public class GamePanel extends JPanel {
     	INITIAL_OFFSET = 50;
 
     	sideOffset = (this.getWidth()-(3*TOWER_WIDTH) - (2 * TOWER_OFFSET))/2;
-
     }
     
     public void paintComponent(Graphics g) {
@@ -132,12 +131,14 @@ public class GamePanel extends JPanel {
     	@Override
     	public void mouseClicked(MouseEvent e) {
     		if(GameGUI.pauseTimer.getText().equals(GameGUI.PAUSE_STR_LIT)){
+    			//Pauses the time and changes the text of button to "Resume"
     			timer.pause();
     			GameGUI.pauseTimer.setText(GameGUI.RESUME_STR_LIT);
     			return;
     		}
 
     		else if(GameGUI.pauseTimer.getText().equals(GameGUI.RESUME_STR_LIT)){
+    			//Resumes the time and changes the text of button to "Pause"
     			timer.resume();
     			GameGUI.pauseTimer.setText(GameGUI.PAUSE_STR_LIT);
     			return;
@@ -161,6 +162,7 @@ public class GamePanel extends JPanel {
     public class ResetGameListener implements MouseListener {
     	@Override
     	public void mouseClicked(MouseEvent e) {
+    		//restarts the game
     		GUIMain.startGame();
     	}
 
@@ -207,8 +209,6 @@ public class GamePanel extends JPanel {
     				JOptionPane.showMessageDialog(null, "This is an illegal move. You may not place a larger disk on top of a smaller disk.\nPlease place a smaller disk on a larger disk or place it on top of an empty tower.", "Illegal Move", JOptionPane.ERROR_MESSAGE);
     			}
 
-
-
     			GamePanel.this.repaint();
 
 		// Check to see if game solved
@@ -241,12 +241,9 @@ public class GamePanel extends JPanel {
 		    	System.exit(0);
 		    }
 		}
-		
 		toTower = 0;  fromTower = 0;
-		
 		return;
 	}
-
 	toTower = 0;  fromTower = 0;
 }
 
