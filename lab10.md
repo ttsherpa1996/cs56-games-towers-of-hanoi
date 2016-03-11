@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # lab10, Matthew Cheung, Ben Zhu
 
 *Issue 44: Change Tower Colors (100 points)
@@ -11,3 +12,6 @@
 *Issue 45: Create an Options Button (150 points)
        - Adding an Options Button will make the game GUI look nicer and will allow users to access pause/reset buttons on the options page that the button takesyou
 
+=======
+lab10, Matthew Cheung, Ben Zhu
+>>>>>>> ca9dab9ee3e0f0ab24667536f4d500c4f842e29e
