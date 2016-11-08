@@ -37,8 +37,7 @@ public class GameGUI {
 	timeDisplay.setOpaque(true);
 	timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
 	timeDisplay.setPreferredSize(new Dimension(100, 50));
-	
-	countDisplay = new JLabel("Move Count: " + GamePanel.state.getNumOfMoves(), JLabel.CENTER);
+      	countDisplay = new JLabel("Move Count: " + GamePanel.state.getNumOfMoves(), JLabel.CENTER);
 	countDisplay.setForeground(Color.WHITE);
 	countDisplay.setBackground(Color.DARK_GRAY);
 	countDisplay.setOpaque(true);
@@ -47,14 +46,29 @@ public class GameGUI {
 
 	pauseTimer = new JButton(PAUSE_STR_LIT);
 	resetGame = new JButton(RESET_STR_LIT);
-
+	JButton gameOption = new JButton("Option");
+	resetGame.setActionCommand("Action");
+	gameOption.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e)
+		{
+		    /* JFrame Secondframe = new JFrame("Game Option");
+		    Secondframe.add(pauseTimer,BorderLayout.WEST);
+		    Secondframe.add(resetGame,BorderLayout.EAST);
+		    Secondframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    Secondframe.setSize(300,100);
+		    Secondframe.setLocationRelativeTo(null);
+		    Secondframe.setVisible(true);*/
+		    new GameOption();
+		}});
+		
 	mainTimePanel = new JPanel(new BorderLayout());
 	timePanel = new JPanel(new BorderLayout());
 	timePanel.add(countDisplay, BorderLayout.NORTH);
 	timePanel.add(timeDisplay, BorderLayout.CENTER);
-	timePanel.add(pauseTimer, BorderLayout.WEST);
-	timePanel.add(resetGame, BorderLayout.EAST);
-
+	//timePanel.add(pauseTimer, BorderLayout.WEST);
+	//timePanel.add(resetGame, BorderLayout.EAST);
+	timePanel.add(gameOption, BorderLayout.WEST);
+	
 	gameTimer = new HanoiTimer(timeDisplay);
 	gameTimer.SetTimeElapsedText();
 	mainTimePanel.add(timePanel, BorderLayout.NORTH);
