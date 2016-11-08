@@ -53,11 +53,13 @@ public class GUIMain {
 	final JTextField txt = new JTextField(10);
 	final JPanel title = new JPanel();
         JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(2,1,0,10));
+        buttons.setLayout(new GridLayout(3,1,0,10));
 	JButton playbutton =new JButton("Play");
+	JButton setting = new JButton("Setting");
 	JButton exit = new JButton("Exit");
 	buttons.add(playbutton);
-        buttons.add(exit);
+	buttons.add(setting);
+	buttons.add(exit);
 	
 	title.setLayout( new BorderLayout());
 
@@ -76,6 +78,7 @@ public class GUIMain {
 	panel.add(txt);
         frame.add(title);
 	frame.setSize(300,300);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setLocationRelativeTo(null);
 	frame.pack();
 	frame.setVisible(true);
@@ -135,6 +138,29 @@ public class GUIMain {
 		}		
 	    
 	    });
+
+	setting.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e)
+		{JFrame settingFrame = new JFrame("Setting");
+		    settingFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    JButton instruction = new JButton("Instruction");
+		    JLabel OnOrOff = new JLabel("On");
+		    instruction.addActionListener(new ActionListener(){
+			    public void actionPerformed(ActionEvent e)
+			    {if (OnOrOff.getText() == "On")
+				    OnOrOff.setText("Off");
+				else OnOrOff.setText("On");}
+			});
+		    settingFrame.setLayout(new GridLayout(1,2,20,10));
+		    settingFrame.add(instruction);
+		    settingFrame.add(OnOrOff);
+		    settingFrame.setSize(400,100);
+		    settingFrame.setLocationRelativeTo(null);
+		    settingFrame.setVisible(true);
+		}
+		
+	    });
+	
 	exit.addActionListener(new ActionListener(){
 
 		public void actionPerformed(ActionEvent e)
