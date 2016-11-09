@@ -18,6 +18,7 @@ public class GameGUI {
     private JPanel timePanel;
     private JLabel timeDisplay;
     private JFrame frame;
+    private static JFrame Secondframe;
     private JPanel mainTimePanel;
     public static GamePanel gamePanel;
     public static JLabel countDisplay;
@@ -32,8 +33,7 @@ public class GameGUI {
           
 	System.out.flush();
 	timeDisplay = new JLabel("Time:"+ "0",JLabel.CENTER);
-	timeDisplay.setForeground(Color.black);
-	timeDisplay.setBackground(Color.white);
+	timeDisplay.setForeground(Color.black);	timeDisplay.setBackground(Color.white);
 	timeDisplay.setOpaque(true);
 	timeDisplay.setFont(new Font("SansSerif", Font.BOLD, 20));
 	timeDisplay.setPreferredSize(new Dimension(100, 50));
@@ -51,15 +51,14 @@ public class GameGUI {
 	gameOption.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
 		{
-		    /* JFrame Secondframe = new JFrame("Game Option");
+		    Secondframe = new JFrame("Game Option");
 		    Secondframe.add(pauseTimer,BorderLayout.WEST);
 		    Secondframe.add(resetGame,BorderLayout.EAST);
 		    Secondframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		    Secondframe.setSize(300,100);
 		    Secondframe.setLocationRelativeTo(null);
-		    Secondframe.setVisible(true);*/
-		    new GameOption();
-		}});
+		    Secondframe.setVisible(true);
+		    }});
 		
 	mainTimePanel = new JPanel(new BorderLayout());
 	timePanel = new JPanel(new BorderLayout());
@@ -100,5 +99,8 @@ public class GameGUI {
     public void close() {
 	frame.dispose();
     }
+    public static void closeOption(){
+	Secondframe.dispose();}
+	
 }
      

@@ -163,8 +163,8 @@ public class GamePanel extends JPanel {
     	@Override
     	public void mouseClicked(MouseEvent e) {
     		//restarts the game
-	    GameOption.closeFrame();
-	   	GUIMain.startGame();
+	      	GUIMain.startGame();
+		GameGUI.closeOption();
     	}
 
     	@Override
