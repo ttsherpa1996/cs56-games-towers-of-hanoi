@@ -197,6 +197,7 @@ public class GamePanel extends JPanel {
 
     		if(fromTower == 0) {
     			fromTower = selectedTower;
+			GamePanel.this.repaint();
     			return;
     		}
 
