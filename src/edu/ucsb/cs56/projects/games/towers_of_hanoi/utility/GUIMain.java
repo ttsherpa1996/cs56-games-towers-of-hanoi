@@ -24,8 +24,6 @@ import java.awt.event.*;
 import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 
 
-import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
-
 /**
  * Main class that launches a GUI version of Towers of Hanoi
  * @author Aaron
@@ -101,6 +99,7 @@ public class GUIMain {
 		    // frame.repaint();
 		    frame.setVisible(false);
 		    int numberOfDisks = 0;
+		    if (gamesetting.getInstruction()){
 		    int choice = JOptionPane.showOptionDialog(null,"Tower of Hanoi: \n\nThe goal of this game is to move all the disks from the leftmost tower to either the middle tower or rightmost tower, adhering to the following rules:\n   1) Move only one disk at a time.\n   2) A larger disk may not be placed ontop of a smaller disk.\n   3) All disks, except the one being moved, must be on a tower. \n\n Please press the OK button to continue","CHOOSE AN OPTION?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Yes","No"}, null);
 
 		    if(choice ==1){
@@ -109,7 +108,7 @@ public class GUIMain {
 			frame.setVisible(false);
 			GUIMain.startGame();
 			return;
-		    }
+		    }}
 		    
 			
 	// Keep looping through the dialogue until a valid number is entered
@@ -148,41 +147,10 @@ public class GUIMain {
 
 	setting.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)
-		{JFrame settingFrame = new JFrame("Setting");
-		    settingFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		    JButton instruction = new JButton("Instruction");
-		    JLabel OnOrOff = new JLabel();
-		    if (gamesetting.getInstruction())
-			OnOrOff.setText("On");
-		    else
-			OnOrOff.setText("Off");
-		    instruction.addActionListener(new ActionListener(){
-			    public void actionPerformed(ActionEvent e)
-			    {if (OnOrOff.getText() == "On")
-				    {OnOrOff.setText("Off");
-					gamesetting.setInstruction(false);}
-				else
-				    {OnOrOff.setText("On");
-					gamesetting.setInstruction(true);}
-			    }
-			});
-		    JButton Save = new JButton("Save");
-		    Save.addActionListener(new ActionListener(){
-			    public void actionPerformed(ActionEvent e)
-			    {try{
-				FileOutputStream fos = new FileOutputStream("GameSetting.ser");
-				ObjectOutputStream os = new ObjectOutputStream(fos);
-				os.writeObject(gamesetting);
-				os.close();}
-				catch(IOException ex){ex.printStackTrace();}}
-			});
-		    settingFrame.setLayout(new GridLayout(2,2,20,10));
-		    settingFrame.add(instruction);
-		    settingFrame.add(OnOrOff);
-		    settingFrame.add(Save);
-		    settingFrame.setSize(400,100);
-		    settingFrame.setLocationRelativeTo(null);
-		    settingFrame.setVisible(true);
+		{
+		    GamesettingFrame settingFrame = new GamesettingFrame();
+		    settingFrame.setSetting(gamesetting);
+		    settingFrame.go();
 		}
 		
 	    });
