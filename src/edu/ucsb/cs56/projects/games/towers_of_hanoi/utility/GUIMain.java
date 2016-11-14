@@ -2,6 +2,8 @@ package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 //Test for new branch
+import java.io.*;
+
 // import javax.swing.JFrame;
 // import javax.swing.JOptionPane;
 // import javax.swing.JTextField;
@@ -13,8 +15,8 @@ import javax.swing.*;
 import java.awt.EventQueue;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+//import java.io.File;
+//import java.io.IOException;
 import javax.imageio.ImageIO;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -33,6 +35,7 @@ import edu.ucsb.cs56.projects.games.towers_of_hanoi.model.TowersOfHanoiState;
 public class GUIMain {
     
     public static GameGUI gui;
+    public static GameSetting gamesetting;
     public static void main (String [] args){
 	startGame();
     }
@@ -40,8 +43,12 @@ public class GUIMain {
     public static void startGame() {
 	    GameGUI.song.play();
         GameGUI.song.loop();
-
-	// This allows us to restart the game without quitting the program
+	try{
+	    ObjectInputStream is = new ObjectInputStream(new FileInputStream("GameSetting.ser"));
+	    gamesetting = (GameSetting) is.readObject();}
+	catch (Exception ex){
+	    gamesetting = new GameSetting();}
+       	// This allows us to restart the game without quitting the program
 	if (gui != null){ // Is a replay, close the old game, clear the disks prompt, show it
 	    gui.close();
 	}
@@ -53,11 +60,13 @@ public class GUIMain {
 	final JTextField txt = new JTextField(10);
 	final JPanel title = new JPanel();
         JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(2,1,0,10));
+        buttons.setLayout(new GridLayout(3,1,0,10));
 	JButton playbutton =new JButton("Play");
+	JButton setting = new JButton("Setting");
 	JButton exit = new JButton("Exit");
 	buttons.add(playbutton);
-        buttons.add(exit);
+	buttons.add(setting);
+	buttons.add(exit);
 	
 	title.setLayout( new BorderLayout());
 
@@ -76,6 +85,7 @@ public class GUIMain {
 	panel.add(txt);
         frame.add(title);
 	frame.setSize(300,300);
+	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setLocationRelativeTo(null);
 	frame.pack();
 	frame.setVisible(true);
@@ -128,13 +138,55 @@ public class GUIMain {
 		continue; // NaN -> show dialogue again
 	    }
 	}
-	int winx = numberOfDisks * 50 + 100;
+	int winx = numberOfDisks * 50 + 200;
 	int winy = 100 + (numberOfDisks)*20;
 	gui = new GameGUI(winx, winy);
 	gui.setState(new TowersOfHanoiState(numberOfDisks));
 		}		
 	    
 	    });
+
+	setting.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e)
+		{JFrame settingFrame = new JFrame("Setting");
+		    settingFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    JButton instruction = new JButton("Instruction");
+		    JLabel OnOrOff = new JLabel();
+		    if (gamesetting.getInstruction())
+			OnOrOff.setText("On");
+		    else
+			OnOrOff.setText("Off");
+		    instruction.addActionListener(new ActionListener(){
+			    public void actionPerformed(ActionEvent e)
+			    {if (OnOrOff.getText() == "On")
+				    {OnOrOff.setText("Off");
+					gamesetting.setInstruction(false);}
+				else
+				    {OnOrOff.setText("On");
+					gamesetting.setInstruction(true);}
+			    }
+			});
+		    JButton Save = new JButton("Save");
+		    Save.addActionListener(new ActionListener(){
+			    public void actionPerformed(ActionEvent e)
+			    {try{
+				FileOutputStream fos = new FileOutputStream("GameSetting.ser");
+				ObjectOutputStream os = new ObjectOutputStream(fos);
+				os.writeObject(gamesetting);
+				os.close();}
+				catch(IOException ex){ex.printStackTrace();}}
+			});
+		    settingFrame.setLayout(new GridLayout(2,2,20,10));
+		    settingFrame.add(instruction);
+		    settingFrame.add(OnOrOff);
+		    settingFrame.add(Save);
+		    settingFrame.setSize(400,100);
+		    settingFrame.setLocationRelativeTo(null);
+		    settingFrame.setVisible(true);
+		}
+		
+	    });
+	
 	exit.addActionListener(new ActionListener(){
 
 		public void actionPerformed(ActionEvent e)
