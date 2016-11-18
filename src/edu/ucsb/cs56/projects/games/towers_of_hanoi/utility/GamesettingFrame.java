@@ -17,6 +17,11 @@ public class GamesettingFrame{
 	JFrame settingFrame = new JFrame("Setting");
 		    settingFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		    JButton instruction = new JButton("Instruction");
+		    JLabel PlayOrStop = new JLabel();
+                    if (gamesetting.getMusic())
+			PlayOrStop.setText("On");
+		    else
+			PlayOrStop.setText("Off");
 		    JLabel OnOrOff = new JLabel();
 		    if (gamesetting.getInstruction())
 			OnOrOff.setText("On");
@@ -42,9 +47,26 @@ public class GamesettingFrame{
 				os.close();}
 				catch(IOException ex){ex.printStackTrace();}}
 			});
-		    settingFrame.setLayout(new GridLayout(2,2,20,10));
+                    JButton Music = new JButton("Music");
+                    Music.addActionListener(new ActionListener(){
+			    public void actionPerformed(ActionEvent e)
+			    {if (PlayOrStop.getText() == "On")
+				    {PlayOrStop.setText("Off");
+					gamesetting.setMusic(false);
+                                        GameGUI.song.stop();}
+				else
+				    {PlayOrStop.setText("On");
+					gamesetting.setMusic(true);
+                                        GameGUI.song.play();
+        				GameGUI.song.loop();}
+			    }
+			});
+				
+		    settingFrame.setLayout(new GridLayout(3,2,20,10));
 		    settingFrame.add(instruction);
 		    settingFrame.add(OnOrOff);
+                    settingFrame.add(Music);
+		    settingFrame.add(PlayOrStop);
 		    settingFrame.add(Save);
 		    settingFrame.setSize(400,100);
 		    settingFrame.setLocationRelativeTo(null);
