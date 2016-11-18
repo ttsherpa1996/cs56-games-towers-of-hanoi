@@ -39,14 +39,16 @@ public class GUIMain {
     }
     
     public static void startGame() {
-	    GameGUI.song.play();
-        GameGUI.song.loop();
-	try{
+	    try{
 	    ObjectInputStream is = new ObjectInputStream(new FileInputStream("GameSetting.ser"));
 	    gamesetting = (GameSetting) is.readObject();}
 	catch (Exception ex){
 	    gamesetting = new GameSetting();}
-       	// This allows us to restart the game without quitting the program
+       	if(gamesetting.getMusic()){
+	GameGUI.song.play();
+        GameGUI.song.loop();
+        }
+	// This allows us to restart the game without quitting the program
 	if (gui != null){ // Is a replay, close the old game, clear the disks prompt, show it
 	    gui.close();
 	}
