@@ -46,10 +46,10 @@ public class GameSetting implements Serializable{
 	    ColorS = "Red";
 	    break;
 	case "Red":
-	    Diskcolor = Color.ORANGE;
-	    ColorS = "Orange";
+	    Diskcolor = new Color(0x4C0099);
+	    ColorS = "Purple";
 	    break;
-	case "Orange":
+	case "Purple":
 	    Diskcolor = Color.BLACK;
 	    ColorS = "Black";
 	    break;}}
