@@ -24,6 +24,7 @@ public class GameGUI {
     public static JLabel countDisplay;
     public static JButton pauseTimer;
     public static JButton resetGame;
+    public static JButton saveGame;
     public static JButton help;
     public static String RESET_STR_LIT = "Reset";
     public static String PAUSE_STR_LIT = "Pause"; 
@@ -47,6 +48,7 @@ public class GameGUI {
 
 	pauseTimer = new JButton(PAUSE_STR_LIT);
 	resetGame = new JButton(RESET_STR_LIT);
+	saveGame = new JButton("Save");
 	help = new JButton("Help");
         help.addActionListener((e)->{int choice = JOptionPane.showOptionDialog(null,"Tower of Hanoi: \n\nThe goal of this game is to move all the disks from the leftmost tower to either the middle tower or rightmost tower, adhering to the following rules:\n   1) Move only one disk at a time.\n   2) A larger disk may not be placed ontop of a smaller disk.\n   3) All disks, except the one being moved, must be on a tower. \n\n Please press the OK button to continue","CHOOSE AN OPTION?", JOptionPane.YES_NO_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{"Ok"}, null);});
 
@@ -56,11 +58,13 @@ public class GameGUI {
 		public void actionPerformed(ActionEvent e)
 		{
 		    Secondframe = new JFrame("Game Option");
-		    Secondframe.add(pauseTimer,BorderLayout.WEST);
-		    Secondframe.add(resetGame,BorderLayout.EAST);
-                    Secondframe.add(help,BorderLayout.CENTER);
+		    Secondframe.setLayout(new GridLayout(1,4,20,10));
+		    Secondframe.add(pauseTimer);
+		    Secondframe.add(resetGame);
+                    Secondframe.add(help);
+		    Secondframe.add(saveGame);
 		    Secondframe.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		    Secondframe.setSize(300,100);
+		    Secondframe.setSize(400,100);
 		    Secondframe.setLocationRelativeTo(null);
 		    Secondframe.setVisible(true);
 		    }});
@@ -101,6 +105,9 @@ public class GameGUI {
     public void setState(TowersOfHanoiState s){
 	gamePanel.setState(s);		
     }
+    public void setTimer(HanoiTimer t){
+	gameTimer = t;
+	gamePanel.setTimer(t);}
     
     public void close() {
 	frame.dispose();

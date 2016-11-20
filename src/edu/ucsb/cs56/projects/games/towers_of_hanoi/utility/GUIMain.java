@@ -60,11 +60,13 @@ public class GUIMain {
 	final JTextField txt = new JTextField(10);
 	final JPanel title = new JPanel();
         JPanel buttons = new JPanel();
-        buttons.setLayout(new GridLayout(3,1,0,10));
+        buttons.setLayout(new GridLayout(4,1,0,10));
+	JButton continuebutton = new JButton("Continue");
 	JButton playbutton =new JButton("Play");
 	JButton setting = new JButton("Setting");
 	JButton exit = new JButton("Exit");
 	buttons.add(playbutton);
+	buttons.add(continuebutton);
 	buttons.add(setting);
 	buttons.add(exit);
 	
@@ -146,6 +148,27 @@ public class GUIMain {
 		}		
 	    
 	    });
+
+	continuebutton.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e)
+		{
+		    frame.setVisible(false);
+		    try{
+	    ObjectInputStream is = new ObjectInputStream(new FileInputStream("SavedGame.ser"));
+	    TowersOfHanoiState gamestate = (TowersOfHanoiState) is.readObject();
+	    HanoiTimer gametimer = (HanoiTimer) is.readObject();
+	    int winx = gamestate.getNumOfDisks()*50 + 200;
+	    int winy = 100 + gamestate.getNumOfDisks()*20;
+	    gui = new GameGUI(winx,winy);
+	    gui.setState(gamestate);
+	    gui.setTimer(gametimer);
+	   }
+	catch (Exception ex){
+	    JOptionPane.showMessageDialog(null, "There is no saved game..", "No Saved Game", JOptionPane.ERROR_MESSAGE);
+	    GUIMain.startGame();}
+		}
+	    });
+		    
 
 	setting.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e)

@@ -3,7 +3,7 @@ package edu.ucsb.cs56.projects.games.towers_of_hanoi.utility;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.GregorianCalendar;
-
+import java.io.*;
 import javax.swing.JLabel;
 
 /**
@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  * This is a timer class that will begin running as soon as it is created. A JLabel is required for it to display in format mm:ss
  * @author Aaron Wexler / amwexler
  */
-public class HanoiTimer {
+public class HanoiTimer implements Serializable {
     private GregorianCalendar gc = new GregorianCalendar();
     private long startTime = 0;
     private long pauseTime = 0;
