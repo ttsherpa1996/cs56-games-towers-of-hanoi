@@ -77,14 +77,14 @@ public class GameGUI {
 	//timePanel.add(resetGame, BorderLayout.EAST);
 	timePanel.add(gameOption, BorderLayout.WEST);
 	
-	gameTimer = new HanoiTimer(timeDisplay);
+	//gameTimer = new HanoiTimer(timeDisplay);
 	//gameTimer.setLabel(timeDisplay);
-	gameTimer.SetTimeElapsedText();
+	//gameTimer.SetTimeElapsedText();
 	mainTimePanel.add(timePanel, BorderLayout.NORTH);
 	
 	gamePanel = new GamePanel();
 	gamePanel.setPreferredSize(new Dimension(window_x,window_y));
-	gamePanel.setTimer(gameTimer);
+	//gamePanel.setTimer(gameTimer);
 
 
 	JLabel instructions = new JLabel("To pick up a disk, click on a tower, then click on another tower to deposit it.");
@@ -100,19 +100,26 @@ public class GameGUI {
 	frame.setLocationRelativeTo(null);
 	
 	frame.setVisible(true);
-	gameTimer.start();
+	//gameTimer.start();
     }
     
     public void setState(TowersOfHanoiState s){
 	gamePanel.setState(s);		
     }
     public void setTimer(HanoiTimer t){
-	gameTimer = t;
+	if (t.getTotalTime() > 0){
+	    gameTimer = new HanoiTimer(t);
+	    }
+	else {
+	    gameTimer = t;}
 	gameTimer.setstartTime();
 	gameTimer.setLabel(timeDisplay);
-	gameTimer.SetTimeElapsedText();
+	if (gameTimer.getPaused())
+	    {pauseTimer.setText(RESUME_STR_LIT);}
 	gamePanel.setTimer(gameTimer);
-	}
+	gameTimer.start();
+	
+    }
     
     public void close() {
 	frame.dispose();

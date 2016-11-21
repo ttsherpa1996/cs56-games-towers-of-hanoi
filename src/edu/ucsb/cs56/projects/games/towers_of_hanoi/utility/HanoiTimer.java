@@ -25,10 +25,27 @@ public class HanoiTimer implements Serializable {
      * Consructs a new HanoiTimer and starts the timer running.
      * @param label The label that will receive the formatted elapsed time.
      */
-    public HanoiTimer(JLabel label) {
-     timeLabel = label;
+    public HanoiTimer() {
+	//timeLabel = label;
      Timer timer = new Timer();
      timer.schedule(new TimerTask() {
+
+      @Override
+      public void run() {
+          updateTimer();
+      }
+    }, 0, 1000);
+     start();
+    }
+    public HanoiTimer(HanoiTimer t){
+	pauseTime = t.getPauseTime();
+	eTime = t.geteTime();
+	totalTime = t.getTotalTime();
+	stopped = t.getStopped();
+	paused = t.getPaused();
+	started = t.getStarted();
+	Timer timer = new Timer();
+	timer.schedule(new TimerTask() {
 
       @Override
       public void run() {
@@ -62,11 +79,21 @@ public class HanoiTimer implements Serializable {
 	return startTime;}
     public JLabel getLabel(){
 	return timeLabel;}
+    public long getPauseTime(){
+	return pauseTime;}
+    public long geteTime(){
+	return eTime;}
+    public boolean getStopped(){
+	return stopped;}
+    public boolean getPaused(){
+	return paused;}
+    public boolean getStarted(){
+	return started;}
     /**
      * If stopped, the timer will restart. Otherwise, do nothing
      */
     public void start() {
-       if(!stopped)return;
+	if(!stopped)return;
        startTime = System.currentTimeMillis() - totalTime;
        stopped = false;
        paused = false;
