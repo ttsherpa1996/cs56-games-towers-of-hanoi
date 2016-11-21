@@ -78,6 +78,7 @@ public class GameGUI {
 	timePanel.add(gameOption, BorderLayout.WEST);
 	
 	gameTimer = new HanoiTimer(timeDisplay);
+	//gameTimer.setLabel(timeDisplay);
 	gameTimer.SetTimeElapsedText();
 	mainTimePanel.add(timePanel, BorderLayout.NORTH);
 	
@@ -107,7 +108,11 @@ public class GameGUI {
     }
     public void setTimer(HanoiTimer t){
 	gameTimer = t;
-	gamePanel.setTimer(t);}
+	gameTimer.setstartTime();
+	gameTimer.setLabel(timeDisplay);
+	gameTimer.SetTimeElapsedText();
+	gamePanel.setTimer(gameTimer);
+	}
     
     public void close() {
 	frame.dispose();

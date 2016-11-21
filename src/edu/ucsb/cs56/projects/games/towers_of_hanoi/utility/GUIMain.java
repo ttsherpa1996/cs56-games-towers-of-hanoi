@@ -145,6 +145,7 @@ public class GUIMain {
 	int winy = 100 + (numberOfDisks)*20;
 	gui = new GameGUI(winx, winy);
 	gui.setState(new TowersOfHanoiState(numberOfDisks));
+	//gui.setTimer(new HanoiTimer());
 		}		
 	    
 	    });
@@ -162,9 +163,11 @@ public class GUIMain {
 	    gui = new GameGUI(winx,winy);
 	    gui.setState(gamestate);
 	    gui.setTimer(gametimer);
+	    System.out.println(gametimer.getTotalTime());
+	    System.out.println(gametimer.getStartTime());
 	   }
 	catch (Exception ex){
-	    JOptionPane.showMessageDialog(null, "There is no saved game..", "No Saved Game", JOptionPane.ERROR_MESSAGE);
+	    JOptionPane.showMessageDialog(null, "There is no saved game.", "No Saved Game", JOptionPane.ERROR_MESSAGE);
 	    GUIMain.startGame();}
 		}
 	    });

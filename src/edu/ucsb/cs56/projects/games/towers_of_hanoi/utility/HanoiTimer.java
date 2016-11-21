@@ -13,10 +13,11 @@ import javax.swing.JLabel;
  */
 public class HanoiTimer implements Serializable {
     private GregorianCalendar gc = new GregorianCalendar();
-    private long startTime = 0;
+    private transient long startTime = 0;
     private long pauseTime = 0;
     private long eTime = 0;
-    private JLabel timeLabel = null;
+    private long totalTime = 0;
+    private transient JLabel timeLabel = null;
     private boolean stopped = true;
     private boolean paused = false;
     private boolean started = false;
@@ -50,13 +51,23 @@ public class HanoiTimer implements Serializable {
        this.stop();
        this.start();
    }
-
+    public void setstartTime(){
+	startTime = System.currentTimeMillis() - totalTime;}
+    public void setLabel(JLabel label){
+	timeLabel = label;}
+    public long getTotalTime(){
+	return totalTime;
+    }
+    public long getStartTime(){
+	return startTime;}
+    public JLabel getLabel(){
+	return timeLabel;}
     /**
      * If stopped, the timer will restart. Otherwise, do nothing
      */
     public void start() {
        if(!stopped)return;
-       startTime = System.currentTimeMillis();
+       startTime = System.currentTimeMillis() - totalTime;
        stopped = false;
        paused = false;
        started = true;
@@ -101,14 +112,17 @@ public class HanoiTimer implements Serializable {
         else if(paused == false && stopped == false && started == true){
             //when the game first starts, when pause button has not been used yet
             gc.setTimeInMillis(System.currentTimeMillis() - startTime);
+	    totalTime = System.currentTimeMillis() - startTime;
         }
         else if(paused == true && stopped == false && started == false){
             //when you press the pause button
             gc.setTimeInMillis(pauseTime);
+	    totalTime  = pauseTime;
         }
         else if(paused == false && stopped == false && started == false){
             //when you press resume
             gc.setTimeInMillis(System.currentTimeMillis() - startTime - (eTime - pauseTime) );
+	    totalTime = System.currentTimeMillis() - startTime - (eTime - pauseTime);
         }
 
         //This converts the computed time into a string
