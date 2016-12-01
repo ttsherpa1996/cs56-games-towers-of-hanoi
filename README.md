@@ -55,11 +55,11 @@ After you have clicked yes. A new window will pop up asking you to enter how man
 
 ![](http://i.imgur.com/HLflReh.png)
 
-Once you click play the game window pops up. You are given a timer on top that continues to run until you are finished or pause the game.You are also given some instructions on the bottom part of the window. Everytime you click a tower the topmost block is highlighted with a particular color. Color of blocks can be changed in the settings button which is located in the main menu. 
+Once you click play the game window pops up. You are given a timer on top that continues to run until you are finished or pause the game.You are also given some instructions on the bottom part of the window.The amount of moves you have done is also given on top of the timer. Everytime you click a tower the topmost block is highlighted with a particular color. Color of blocks can be changed in the settings button which is located in the main menu.
 
 If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
 
-![](http://i.imgur.com/AHuwF0Z.jpg)
+![](http://i.imgur.com/4VLdvrj.png)
 
 Upon completion, the game provides feedback.
 
