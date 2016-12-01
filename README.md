@@ -41,7 +41,7 @@ The game counts the user's moves. When the user completes the puzzle, the game t
 
 ![](http:///cs/student/ttsherpa/Pictures/menu.png "Menu")
 
-![](http://i.imgur.com/EENXRwP.png)
+
 
 Instructional window pops up when running the GUI
 
