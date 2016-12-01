@@ -47,7 +47,8 @@ When game is first run. Menu frame pops up with a Play Button, Continue Button, 
 
 When play button is first clicked an Instructional window pops up like the one shown below. 
 
-![](http://i.imgur.com/yzU5bNN.png)
+![](http://i.imgur.com/yswp0gG.png)
+
 
 First, enter how many disks you want for each tower to have.  The minimum is 3.  When you have entered a valid number, click "Done".
 
