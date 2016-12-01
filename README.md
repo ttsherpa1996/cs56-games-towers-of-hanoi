@@ -40,6 +40,7 @@ The game counts the user's moves. When the user completes the puzzle, the game t
 ### GUI Version
 
 ![](http://i.imgur.com/f0Slw59.png)
+
 When game is first run. Menu frame pops up with a Play Button, Continue Button, Settings Button, and Exit Button. 
 
 
