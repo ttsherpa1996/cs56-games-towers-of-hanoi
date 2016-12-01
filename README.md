@@ -39,7 +39,7 @@ The game counts the user's moves. When the user completes the puzzle, the game t
 
 ### GUI Version
 
-![](http:///cs/student/ttsherpa/Pictures/menu.png "Menu")
+![](http://i.imgur.com/a/VxurF.png)
 
 
 
