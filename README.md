@@ -59,7 +59,7 @@ Once you click play the game window pops up. You are given a timer on top that c
 
 If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
 
-![](http://i.imgur.com/AHuwF0Z.jpg)
+![](http://i.imgur.com/55AbwOY.png)
 
 Upon completion, the game provides feedback.
 
