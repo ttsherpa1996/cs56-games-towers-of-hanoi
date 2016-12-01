@@ -48,11 +48,14 @@ When game is first run. Menu frame pops up with a Play Button, Continue Button, 
 When play button is first clicked an Instructional window pops up like the one shown below. 
 
 ![](http://i.imgur.com/yswp0gG.png)
+
 If you would like to continue playing the game after reading the instruction click yes. Else if you would like to go back to the main menu click no. 
 
 After you have clicked yes. A new window will pop up asking you to enter how many disks you want each tower to have.  The minimum is 3.  When you have entered a valid number, click "Play". But if you would like to go back to the main menu click "Done".
 
-![](http://i.imgur.com/KLixp4c.png)
+![](http://i.imgur.com/HLflReh.png)
+
+Once you click play the game window pops up. You are given a timer on top that continues to run until you are finished or pause the game.You are also given some instructions on the bottom part of the window. Everytime you click a tower the topmost block is highlighted with a particular color. Color of blocks can be changed in the settings button which is located in the main menu. 
 
 If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
 
