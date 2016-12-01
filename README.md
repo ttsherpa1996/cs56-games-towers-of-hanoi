@@ -44,7 +44,8 @@ The game counts the user's moves. When the user completes the puzzle, the game t
 When game is first run. Menu frame pops up with a Play Button, Continue Button, Settings Button, and Exit Button. 
 
 
-Instructional window pops up when running the GUI
+
+When play button is first clicked an Instructional window pops up like the one shown below. 
 
 ![](http://i.imgur.com/yzU5bNN.png)
 
