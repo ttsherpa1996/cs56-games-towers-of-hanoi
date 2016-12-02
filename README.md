@@ -57,6 +57,10 @@ After you have clicked yes. A new window will pop up asking you to enter how man
 
 Once you click play the game window pops up. You are given a timer on top that continues to run until you are finished or pause the game.You are also given some instructions on the bottom part of the window. Everytime you click a tower the topmost block is highlighted with a particular color. Color of blocks can be changed in the settings button which is located in the main menu. 
 
+There is also an options button that allows you to pause the game, reset the game by taking you to the main menu, a help button that gives you instructions of the game and save button that allows you to save the game data. 
+
+![](http://i.imgur.com/1uKPXgZ.png)
+
 If you make an illegal move, the game provides an alert. Tap the spacebar to dismiss it.
 
 ![](http://i.imgur.com/sVU2cVv.png)
