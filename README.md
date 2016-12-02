@@ -69,6 +69,16 @@ Upon completion, the game provides feedback.
 
 ![](http://i.imgur.com/55AbwOY.png)
 
+### Continue Button
+
+When clicking the Continue button you are able to continue the last game state that you have saved after saving the game on the game frame using the options button. 
+
+### Setting Button
+
+When clicking the settings button you can change many features such as the shape of the block, the color of the block, turn music on or off, and turn the instructions on or off. After changing each feature on the settings frame you must make sure to click the save button before exiting out of the frame. 
+
+![](http://i.imgur.com/cFVj15G.png)
+
 #### Instructions for GUI Version
 
 When the game starts, so will the timer.  Click on a tower to select its top disk and then click on another tower to move that disk there. Move all three disks to another tower to win the game.
